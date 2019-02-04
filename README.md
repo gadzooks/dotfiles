@@ -1,2 +1,4 @@
 # dotfiles
-My do files
+
+- install yadm
+- https://thelocehiliosan.github.io/yadm/docs/getting_started
