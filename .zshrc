@@ -133,3 +133,11 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 source ~/.rvm/scripts/rvm
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# karwande added
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+# Vi style:
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
