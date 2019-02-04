@@ -1,0 +1,7 @@
+alias a="alias"
+a cls="clear"
+a vi="vim"
+a gitlog="git log --graph --all"
+a h="history"
+a ta='tmux attach -t'
+a tn='tmux new -s'
