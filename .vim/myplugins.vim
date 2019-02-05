@@ -50,6 +50,8 @@ Plug 'https://github.com/junegunn/fzf.git', { 'dir': '~/.fzf', 'do': './install 
 " FIXME : no worky :-(
 "Plug 'https://github.com/kien/rainbow_parentheses.vim.git'
 
+Plug 'https://github.com/junegunn/vim-easy-align.git'
+
 " Initialize plugin system
 call plug#end()
 " Reload .vimrc and :PlugInstall to install plugins.
@@ -85,16 +87,13 @@ set tags=tags;/
 
 let g:airline#extensions#tabline#enabled = 1
 
-"vim-rpsec
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
 "session workspace plugin
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave_always = 1
+let g:workspace_autosave_ignore = ['gitcommit']
+"If you would prefer that a session is automatically created if it doesn't exist,
+"you can add the following line to enable the behaviour:
+let g:workspace_autocreate =1
 
 "rainbow_parentheses
 " No worky

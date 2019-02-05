@@ -33,8 +33,9 @@ set sidescroll=1
 set mouse=a
 
 " ================ Completion =======================
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildmode=list:full      "When more than one match, list all matches and
+                            "complete first match.
+set wildmenu
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*

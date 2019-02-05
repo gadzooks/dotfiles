@@ -1,7 +1,10 @@
-alias a="alias"
-a cls="clear"
-a vi="vim"
-a gitlog="git log --graph --all"
-a h="history"
+alias a='alias'
+a cls='clear'
+a vi='vim'
+a h='history'
 a ta='tmux attach -t'
 a tn='tmux new -s'
+a reload='source ~/.zshrc'
+
+a gitlog="git log --graph --all"
+a gst='git status'
