@@ -90,10 +90,7 @@ let g:airline#extensions#tabline#enabled = 1
 "session workspace plugin
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave_always = 1
-let g:workspace_autosave_ignore = ['gitcommit']
-"If you would prefer that a session is automatically created if it doesn't exist,
-"you can add the following line to enable the behaviour:
-let g:workspace_autocreate =1
+let g:workspace_session_disable_on_args = 1
 
 "rainbow_parentheses
 " No worky
