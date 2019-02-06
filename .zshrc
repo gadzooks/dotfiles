@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/gadzooks/.oh-my-zsh
+export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -99,7 +99,8 @@ export EDITOR='vim'
 
 # karwande added
 source ~/.alias
-export JAVA_HOME=$(/usr/libexec/java_home)
+
+# export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -109,7 +110,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH="$PATH:/usr/local/opt/python/libexec/bin"
 
 # aws cli path
-export PATH="$PATH:/Users/gadzooks/Library/Python/3.7/bin"
+export PATH="$PATH:/Users/$USER/Library/Python/3.7/bin"
 
 # * -i - ignore case when searching (but respect case if search term contains uppercase letters)
 # * -X - do not clear screen on exit
@@ -131,8 +132,7 @@ bindkey -M vicmd v edit-command-line
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
-source ~/.rvm/scripts/rvm
-
+[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # karwande added
