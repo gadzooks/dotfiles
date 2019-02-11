@@ -1,10 +1,20 @@
-" install vim-plug before anything else
+" NOTE :
+" NOTE :
+"""""" ""install vim-plug before anything else """""""""""""""""""""
+" NOTE :
+" NOTE :
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+" Usage :
+" PlugInstall
+" PlugClean
+" PlugUpdate
+" PlugUpgrade
+"
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -15,6 +25,9 @@ call plug#begin('~/.vim/plugged')
 " ruby / rails plugins
 Plug 'https://github.com/tpope/vim-rails.git'
 "Plug 'https://github.com/tpope/vim-rbenv.git'
+Plug 'https://github.com/tpope/vim-bundler.git'
+Plug 'https://github.com/tpope/vim-rake.git'
+Plug 'https://github.com/kchmck/vim-coffee-script.git'
 
 " Plug 'https://github.com/vim-scripts/vim-auto-save.git'
 " sensible defaults
@@ -24,6 +37,7 @@ Plug 'https://github.com/tpope/vim-rails.git'
 " Git support
 " http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/
 Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/airblade/vim-gitgutter.git'
 
 "to change it to 'Hello world!'
 "Now press cs'<q> to change it to <q>Hello world!</q>
@@ -51,6 +65,17 @@ Plug 'https://github.com/junegunn/fzf.git', { 'dir': '~/.fzf', 'do': './install 
 "Plug 'https://github.com/kien/rainbow_parentheses.vim.git'
 
 Plug 'https://github.com/junegunn/vim-easy-align.git'
+
+" ctags plugin
+" Plug 'https://github.com/Valloric/YouCompleteMe.git'
+Plug 'https://github.com/ludovicchabant/vim-gutentags.git'
+
+"use ripgrep inside vim
+":Rg <string|pattern>
+":RgRoot -- show root dir
+Plug 'https://github.com/jremmen/vim-ripgrep.git'
+
+Plug 'https://github.com/Yggdroot/indentLine.git'
 
 " Initialize plugin system
 call plug#end()
@@ -98,3 +123,8 @@ let g:workspace_session_disable_on_args = 1
 " au Syntax * RainbowParenthesesLoadRound
 " au Syntax * RainbowParenthesesLoadSquare
 " au Syntax * RainbowParenthesesLoadBraces
+
+"indentLine
+let g:indentLine_char = '⎸'
+
+"gutentags

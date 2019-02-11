@@ -59,7 +59,7 @@ set cursorline
 
 set number
 set relativenumber			" relative line numbers! How cool is that?!
-set numberwidth=5               " How many columns to use for the line number
+set numberwidth=3               " How many columns to use for the line number
 
 set autowrite                   " Automatically :write before running commands
 set autoread                    " Automatically read file changed outside of vim

@@ -1,3 +1,4 @@
+export TERM="xterm-256color"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,6 +9,13 @@ export ZSH="/Users/$USER/.oh-my-zsh"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+ZSH_THEME="rkj"
+ZSH_THEME="half-life" # good colors
+ZSH_THEME="random"
+ZSH_THEME="avk"
+ZSH_THEME="gallois"
+ZSH_THEME="random"
+ZSH_THEME="crunch"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -36,7 +44,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -59,8 +67,19 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+# aws #NOTE: makes new window slower
+bundler
+copyfile
+git
+gitfast
+git-extras
+jira
+vi-mode
+web-search # google what is github
+zsh-syntax-highlighting
 )
+
+export JIRA_URL='https://navigatingcancer.atlassian.net'
 
 # karwande added
 # https://docs.brew.sh/Shell-Completion
@@ -95,10 +114,7 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-# karwande added
-source ~/.alias
+[ -f ~/.alias ] && source ~/.alias
 
 # export JAVA_HOME=$(/usr/libexec/java_home)
 
@@ -117,12 +133,8 @@ export PATH="$PATH:/Users/$USER/Library/Python/3.7/bin"
 # * -F - exit if text is less then one screen long
 # * -R - was on by default on my system, something related to colors
 #export LESS=-iXFS
-export LESS="-eirMX"
+export LESS="-eirM"
 
-# Enable Ctrl-x-e to edit command line
-autoload -U edit-command-line
-# # Emacs style
-# zle -N edit-command-line
 # bindkey '^xe' edit-command-line
 # bindkey '^x^e' edit-command-line
 # Vi style:
@@ -130,7 +142,7 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+# export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 [ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -141,3 +153,19 @@ autoload -U edit-command-line
 # Vi style:
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export LDFLAGS=-L/usr/local/opt/openssl/lib
+export CPPFLAGS=-I/usr/local/opt/openssl/include
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+
+# echo 'Ruby version : ' `ruby -v`
+
+# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# FIXME not working
+bindkey '^;' autosuggest-accept
+bindkey '^;;' autosuggest-execute
+
+# brew install zsh-syntax-highlighting
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+# source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme

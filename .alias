@@ -8,3 +8,5 @@ a reload='source ~/.zshrc'
 
 a gitlog="git log --graph --all"
 a gst='git status'
+a grep='rg'
+a be='bundle exec'
