@@ -1,4 +1,5 @@
 alias a='alias'
+a u='unalias'
 a cls='clear'
 a vi='vim'
 a h='history'
@@ -10,3 +11,6 @@ a gitlog="git log --graph --all"
 a gst='git status'
 a grep='rg'
 a be='bundle exec'
+
+u g
+a g='google'

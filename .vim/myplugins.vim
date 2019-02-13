@@ -51,6 +51,7 @@ Plug 'https://github.com/tpope/vim-commentary.git'
 "Plug 'https://github.com/vim-airline/vim-airline-themes.git'
 
 Plug 'https://github.com/thoughtbot/vim-rspec.git'
+Plug 'https://github.com/tpope/vim-dispatch.git'
 
 " session management, auto file save
 Plug 'https://github.com/thaerkh/vim-workspace.git'
@@ -67,7 +68,10 @@ Plug 'https://github.com/junegunn/fzf.git', { 'dir': '~/.fzf', 'do': './install 
 Plug 'https://github.com/junegunn/vim-easy-align.git'
 
 " ctags plugin
+" Tried it out but not doing the right thing for ruby files
 " Plug 'https://github.com/Valloric/YouCompleteMe.git'
+"auto complete from opened buffers
+Plug 'https://github.com/ervandew/supertab.git'
 Plug 'https://github.com/ludovicchabant/vim-gutentags.git'
 
 "use ripgrep inside vim
@@ -77,9 +81,15 @@ Plug 'https://github.com/jremmen/vim-ripgrep.git'
 
 Plug 'https://github.com/Yggdroot/indentLine.git'
 
+Plug 'https://github.com/christoomey/vim-tmux-navigator.git'
+
+Plug 'https://github.com/aserebryakov/vim-todo-lists.git'
+
+Plug 'https://github.com/tpope/vim-endwise.git'
+
 " Initialize plugin system
 call plug#end()
-" Reload .vimrc and :PlugInstall to install plugins.
+" NOTE: Reload .vimrc and :PlugInstall to install plugins.
 
 " ============== Plugin related settings ====================
 "auto save files
@@ -103,9 +113,6 @@ let g:rails_projections = {
 
 let mapleader = "\\"
 
-" ctags
-set tags=tags;/
-
 "CtrP fuzzy find files
 "http://ctrlpvim.github.io/ctrlp.vim/#installation
 "set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -114,6 +121,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 "session workspace plugin
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+" let g:workspace_undodir='~/.undodir'
+
 let g:workspace_autosave_always = 1
 let g:workspace_session_disable_on_args = 1
 
@@ -128,3 +137,15 @@ let g:workspace_session_disable_on_args = 1
 let g:indentLine_char = '⎸'
 
 "gutentags
+silent !mkdir -p ~/.ctags
+let g:gutentags_cache_dir = '~/.ctags/'
+let g:gutentags_enabled = 1
+"tell Vim to only use the current file and ctags when finding keywords:
+"https://thoughtbot.com/blog/integrating-vim-into-your-life
+set complete=.,t
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
+
+" ctags
+" set tags=tags;/
+

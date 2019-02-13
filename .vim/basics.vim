@@ -1,11 +1,14 @@
 " Set default encoding to UTF-8.
 set encoding=utf-8
 
-set nobackup                    " Don't keep a backup file
-set writebackup                 " … but do keep a backup file during writes
-set directory-=.                " Don't store swapfiles in the current directory
+" set nobackup                    " Don't keep a backup file
+" set writebackup                 " … but do keep a backup file during writes
+" set directory-=.                " Don't store swapfiles in the current directory
 
-set noswapfile
+" set noswapfile
+set backup
+set backupdir=/tmp/backups
+set directory=/tmp/backups
 syntax on
 filetype plugin indent on
 filetype plugin on
