@@ -59,6 +59,7 @@ Plug 'https://github.com/thaerkh/vim-workspace.git'
 "fzf fuzzy searching
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 Plug 'https://github.com/junegunn/fzf.git', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 " Both options are optional. You don't have to install fzf in ~/.fzf
 " and you don't have to run the install script if you use fzf only in Vim.
 
