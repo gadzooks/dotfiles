@@ -146,6 +146,9 @@ export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
 [ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861
+# make fzf use ripgrep
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 # karwande added
 # Enable Ctrl-x-e to edit command line

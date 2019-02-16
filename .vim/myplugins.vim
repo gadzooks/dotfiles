@@ -34,6 +34,12 @@ Plug 'https://github.com/kchmck/vim-coffee-script.git'
 " NOTE : disabled since it seems to interfere with my settings
 "Plug 'https://github.com/tpope/vim-sensible.git'
 
+" Plug 'https://github.com/mxw/vim-jsx.git'
+" Plug 'https://github.com/MaxMEllon/vim-jsx-pretty.git'
+" Plug 'https://github.com/leafgarland/typescript-vim'
+" Plug 'https://github.com/pangloss/vim-javascript.git'
+" Plug 'https://github.com/mattn/emmet-vim.git'
+
 " Git support
 " http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -43,6 +49,8 @@ Plug 'https://github.com/airblade/vim-gitgutter.git'
 "Now press cs'<q> to change it to <q>Hello world!</q>
 " cs, ds
 Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/tpope/vim-repeat.git'
+Plug 'https://github.com/adelarsq/vim-matchit.git'
 
 " comment code : use gc
 Plug 'https://github.com/tpope/vim-commentary.git'
@@ -59,7 +67,8 @@ Plug 'https://github.com/thaerkh/vim-workspace.git'
 "fzf fuzzy searching
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 Plug 'https://github.com/junegunn/fzf.git', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+Plug 'https://github.com/junegunn/fzf.vim.git'
+" Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 " Both options are optional. You don't have to install fzf in ~/.fzf
 " and you don't have to run the install script if you use fzf only in Vim.
 
@@ -73,7 +82,7 @@ Plug 'https://github.com/junegunn/vim-easy-align.git'
 " Plug 'https://github.com/Valloric/YouCompleteMe.git'
 "auto complete from opened buffers
 Plug 'https://github.com/ervandew/supertab.git'
-Plug 'https://github.com/ludovicchabant/vim-gutentags.git'
+" Plug 'https://github.com/ludovicchabant/vim-gutentags.git'
 
 "use ripgrep inside vim
 ":Rg <string|pattern>
@@ -87,6 +96,13 @@ Plug 'https://github.com/christoomey/vim-tmux-navigator.git'
 Plug 'https://github.com/aserebryakov/vim-todo-lists.git'
 
 Plug 'https://github.com/tpope/vim-endwise.git'
+
+"linting
+Plug 'https://github.com/w0rp/ale.git'
+" Here’s how to install ESLint:"
+"yarn add --dev eslint babel-eslint eslint-plugin-react
+" and then configure it by runnning:
+"eslint --init
 
 " Initialize plugin system
 call plug#end()
@@ -137,16 +153,29 @@ let g:workspace_session_disable_on_args = 1
 "indentLine
 let g:indentLine_char = '⎸'
 
-"gutentags
-silent !mkdir -p ~/.ctags
-let g:gutentags_cache_dir = '~/.ctags/'
-let g:gutentags_enabled = 1
-"tell Vim to only use the current file and ctags when finding keywords:
-"https://thoughtbot.com/blog/integrating-vim-into-your-life
-set complete=.,t
-set statusline+=%{gutentags#statusline()}
-let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
+""gutentags
+"silent !mkdir -p ~/.ctags
+"let g:gutentags_cache_dir = '~/.ctags/'
+"let g:gutentags_enabled = 1
+""tell Vim to only use the current file and ctags when finding keywords:
+""https://thoughtbot.com/blog/integrating-vim-into-your-life
+"set complete=.,t
+"set statusline+=%{gutentags#statusline()}
+"let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
 
 " ctags
 " set tags=tags;/
 
+" jsx
+let g:vim_jsx_pretty_colorful_config = 1 " default 0
+" emmet
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+
+" map ctrl-p to fzf search
+nnoremap <C-p> :Files<Cr>
