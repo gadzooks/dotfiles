@@ -70,6 +70,7 @@ plugins=(
 # aws #NOTE: makes new window slower
 bundler
 copyfile
+colored-man-pages
 git
 gitfast
 git-extras
@@ -77,6 +78,7 @@ jira
 vi-mode
 web-search # google what is github
 zsh-syntax-highlighting
+zsh-autosuggestions
 )
 
 export JIRA_URL='https://navigatingcancer.atlassian.net'
