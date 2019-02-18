@@ -132,7 +132,19 @@ command! MakeTags !ctags -R .
 " file for autosaved session
 let g:ausession=".vimsession"
 
-highlight ColorColumn ctermbg=magenta
-" '\%81v' is a regex matching the virtual 81st column
-call matchadd('ColorColumn', '\%81v', 100)
+" change background color after 80th column and 120th column
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="80,".join(range(120,999),",")
 
+" automatically set paste when pasting and then disable afterwards
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction

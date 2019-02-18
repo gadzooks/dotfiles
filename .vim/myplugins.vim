@@ -20,7 +20,6 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 " NOTE Make sure you use single quotes
-
 " ruby / rails plugins
 Plug 'tpope/vim-rails'
 ":A to jump to spec not test
@@ -36,43 +35,16 @@ let g:rails_projections = {
       \   }
       \}
 
+
 "Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rake'
 Plug 'kchmck/vim-coffee-script'
 
-" Plug 'vim-scripts/vim-auto-save'
-" sensible defaults
-" NOTE : disabled since it seems to interfere with my settings
-"Plug 'tpope/vim-sensible'
-
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'mattn/emmet-vim'
-let g:user_emmet_leader_key='<Tab>'
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
-" Plug 'MaxMEllon/vim-jsx-pretty'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'mattn/emmet-vim'
-" let g:vim_jsx_pretty_colorful_config = 1 " default 0
-" " emmet
-
-
 " Git support
 " http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-
-"to change it to 'Hello world!'
-"Now press cs'<q> to change it to <q>Hello world!</q>
-" cs, ds
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'adelarsq/vim-matchit'
 
 " comment code : use gc
 Plug 'tpope/vim-commentary'
@@ -81,58 +53,18 @@ Plug 'tpope/vim-commentary'
 "Plug 'vim-airline/vim-airline-themes'
 " let g:airline#extensions#tabline#enabled = 1
 
-Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-dispatch'
+"to change it to 'Hello world!'
+"Now press cs'<q> to change it to <q>Hello world!</q>
+" cs, ds
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'adelarsq/vim-matchit'
 
-" session management, auto file save
-Plug 'thaerkh/vim-workspace'
-"session workspace plugin
-let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-" let g:workspace_undodir='~/.undodir'
-let g:workspace_autosave_always = 1
-let g:workspace_session_disable_on_args = 1
-
-"fzf fuzzy searching
-" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" map ctrl-p to fzf search
-nnoremap <C-p> :Files<Cr>
-" Both options are optional. You don't have to install fzf in ~/.fzf
-" and you don't have to run the install script if you use fzf only in Vim.
-
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-
-Plug 'junegunn/vim-easy-align'
-Plug 'vim-scripts/LargeFile'
-let g:LargeFile=1500
-
-" ctags plugin
-" Tried it out but not doing the right thing for ruby files
-" Plug 'Valloric/YouCompleteMe'
-"auto complete from opened buffers
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-
-" ultisnips depends on having deoplete or YouCompleteMe
-" Track the engine.
-Plug 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
-
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -153,6 +85,14 @@ Plug 'aserebryakov/vim-todo-lists'
 
 Plug 'tpope/vim-endwise'
 
+"fzf fuzzy searching
+" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
+" If you already installed fzf using Homebrew, the following should suffice:
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+" " map ctrl-p to fzf search
+nnoremap <C-p> :Files<Cr>
+
 "https://drivy.engineering/setting-up-vim-for-react/
 "linting
 Plug 'w0rp/ale'
@@ -169,6 +109,31 @@ let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 Plug 'skywind3000/asyncrun.vim'
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 " Initialize plugin system
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim'
+let g:vim_jsx_pretty_colorful_config = 1 " default 0
+" " emmet
+
+"" session management, auto file save
+"Plug 'thaerkh/vim-workspace'
+""session workspace plugin
+"let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+"" let g:workspace_undodir='~/.undodir'
+"let g:workspace_autosave_always = 1
+let g:workspace_session_disable_on_args = 1
+
+
 call plug#end()
 " NOTE: Reload .vimrc and :PlugInstall to install plugins.
 
@@ -192,4 +157,32 @@ call plug#end()
 
 " ctags
 " set tags=tags;/
+
+" Plug 'vim-scripts/vim-auto-save'
+" sensible defaults
+" NOTE : disabled since it seems to interfere with my settings
+"Plug 'tpope/vim-sensible'
+
+" Tried it out but not doing the right thing for ruby files
+" Plug 'Valloric/YouCompleteMe'
+"auto complete from opened buffers
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+
+" Plug 'thoughtbot/vim-rspec'
+" Plug 'tpope/vim-dispatch'
+
+" Plug 'luochen1990/rainbow'
+" let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+" Plug 'junegunn/vim-easy-align'
+
+" Plug 'vim-scripts/LargeFile'
+" let g:LargeFile=1500
 
