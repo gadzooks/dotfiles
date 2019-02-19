@@ -15,6 +15,7 @@ ZSH_THEME="random"
 ZSH_THEME="avk"
 ZSH_THEME="gallois"
 ZSH_THEME="random"
+# current theme
 ZSH_THEME="crunch"
 
 # Set list of themes to load
@@ -81,6 +82,15 @@ zsh-syntax-highlighting
 zsh-autosuggestions
 )
 
+#https://github.com/zplug/zplug
+#NOTE : to install run : zplug install
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+ENHANCD_FILTER=fzy:fzf:peco
+export ENHANCD_FILTER
+
+zplug "b4b4r07/enhancd", use:init.sh
+
 export JIRA_URL='https://navigatingcancer.atlassian.net'
 
 # karwande added
@@ -142,6 +152,7 @@ export LESS="-eirM"
 # Vi style:
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+bindkey -v
 
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 # export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -182,3 +193,7 @@ bindkey '^;;' autosuggest-execute
 # brew install zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+
+# brew install autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
