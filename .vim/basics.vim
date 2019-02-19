@@ -63,7 +63,7 @@ set showcmd
 set cursorline
 
 set number
-set relativenumber			" relative line numbers! How cool is that?!
+set relativenumber                " relative line numbers! How cool is that?!
 set numberwidth=3               " How many columns to use for the line number
 
 set autowrite                   " Automatically :write before running commands
@@ -89,6 +89,8 @@ set showmatch                   " Show matching brackets
 set incsearch                   " Do incremental searching
 set ignorecase
 set smartcase
+" clear search highlight
+nnoremap <leader><space> :noh<cr>
 
 " turn off highlighting when esc is pressed
 " FIXME : this starts vim in REPLACE mode.
@@ -120,12 +122,12 @@ if v:version > 703 || v:version == 703 && has("patch541")
 endif
 
 " status line
-set statusline=
-set statusline+=%f\ %2*%m\ %1*%h
-set statusline+=%#warningmsg#
-set statusline+=%{fugitive#statusline()}
-set statusline+=%*
-set statusline+=%r%=[%{&encoding}\ %{&fileformat}\ %{strlen(&ft)?&ft:'none'}]\ %12.(%c:%l/%L%)
+" set statusline=
+" set statusline+=%f\ %2*%m\ %1*%h
+" set statusline+=%#warningmsg#
+" set statusline+=%{fugitive#statusline()}
+" set statusline+=%*
+" set statusline+=%r%=[%{&encoding}\ %{&fileformat}\ %{strlen(&ft)?&ft:'none'}]\ %12.(%c:%l/%L%)
 
 " tag support
 set tags=./tags;

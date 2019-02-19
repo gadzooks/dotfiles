@@ -150,7 +150,15 @@ export GROOVY_HOME=/usr/local/opt/groovy/libexec
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861
 # make fzf use ripgrep
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
+# https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
+# --files: List files that would be searched but do not search
+# --no-ignore: Do not respect .gitignore, etc...
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # karwande added
 # Enable Ctrl-x-e to edit command line

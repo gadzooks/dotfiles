@@ -2,11 +2,14 @@
 " " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+let mapleader = ","
+
 source $HOME/.vim/myplugins.vim
 source $HOME/.vim/basics.vim
 source $HOME/.vim/editing.vim
 source $HOME/.vim/bindings.vim
 source $HOME/.vim/windows.vim
+source $HOME/.vim/mycommands.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Load local config

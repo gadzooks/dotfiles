@@ -54,6 +54,7 @@ Plug 'airblade/vim-gitgutter'
 " comment code : use gc
 Plug 'tpope/vim-commentary'
 
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
@@ -68,6 +69,11 @@ let g:airline_skip_empty_sections = 1
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'adelarsq/vim-matchit'
+Plug 'kana/vim-textobj-user'
+"var / vir to select between def / end
+Plug 'rhysd/vim-textobj-ruby'
+"am/im to select between matchit sections
+Plug 'adriaanzon/vim-textobj-matchit'
 
 " TODO
 Plug 'honza/vim-snippets'
@@ -131,6 +137,7 @@ autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --
 " Initialize plugin system
 
 "Code Snippets TODO
+"https://github.com/tpope/vim-unimpaired TODO : check out sometime
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
