@@ -58,6 +58,8 @@ autocmd BufWritePre *.haml %s/\s\+$//e
 autocmd BufWritePre *.rb %s/\s\+$//e
 autocmd BufWritePre *.js %s/\s\+$//e
 
+set showcmd
+
 set cursorline
 
 set number

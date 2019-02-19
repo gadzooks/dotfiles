@@ -39,7 +39,12 @@ let g:rails_projections = {
 "Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rake'
-Plug 'kchmck/vim-coffee-script'
+
+" Syntax highlighter plugins
+" Plug 'kchmck/vim-coffee-script'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+Plug 'sheerun/vim-polyglot'
 
 " Git support
 " http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/
@@ -49,9 +54,13 @@ Plug 'airblade/vim-gitgutter'
 " comment code : use gc
 Plug 'tpope/vim-commentary'
 
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-" let g:airline#extensions#tabline#enabled = 1
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='bubblegum'
+let g:airline_section_a = ''
+let g:airline_section_y = ''
+let g:airline_skip_empty_sections = 1
 
 "to change it to 'Hello world!'
 "Now press cs'<q> to change it to <q>Hello world!</q>
@@ -60,6 +69,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'adelarsq/vim-matchit'
 
+" TODO
 Plug 'honza/vim-snippets'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -67,6 +77,10 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" Hitting ctrl-_ will initiate a search for the most recent open tag above that is not closed
+Plug 'docunext/closetag.vim'
+let g:closetag_html_style=1
 
 Plug 'ervandew/supertab'
 " Plug 'ludovicchabant/vim-gutentags'
@@ -83,6 +97,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'aserebryakov/vim-todo-lists'
 
+"ruby
 Plug 'tpope/vim-endwise'
 
 "fzf fuzzy searching
@@ -92,6 +107,11 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 " " map ctrl-p to fzf search
 nnoremap <C-p> :Files<Cr>
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 "https://drivy.engineering/setting-up-vim-for-react/
 "linting
@@ -109,8 +129,8 @@ let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 Plug 'skywind3000/asyncrun.vim'
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 " Initialize plugin system
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+
+"Code Snippets TODO
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
@@ -119,11 +139,10 @@ let g:user_emmet_settings = {
     \  },
   \}
 
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'leafgarland/typescript-vim'
-Plug 'mattn/emmet-vim'
-let g:vim_jsx_pretty_colorful_config = 1 " default 0
-" " emmet
+" Plug 'MaxMEllon/vim-jsx-pretty'
+" let g:vim_jsx_pretty_colorful_config = 1 " default 0
+
+" Plug 'leafgarland/typescript-vim'
 
 "" session management, auto file save
 "Plug 'thaerkh/vim-workspace'
@@ -131,8 +150,13 @@ let g:vim_jsx_pretty_colorful_config = 1 " default 0
 "let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 "" let g:workspace_undodir='~/.undodir'
 "let g:workspace_autosave_always = 1
-let g:workspace_session_disable_on_args = 1
+" let g:workspace_session_disable_on_args = 1
 
+" provides automatic closing of quotes, parenthesis, brackets, etc., 
+Plug 'raimondi/delimitmate'
+
+" vim performance/profiling plugin
+" https://github.com/bling/minivimrc
 
 call plug#end()
 " NOTE: Reload .vimrc and :PlugInstall to install plugins.
