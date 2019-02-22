@@ -14,3 +14,4 @@ a be='bundle exec'
 
 u g
 a g='google'
+source ~/.local.alias

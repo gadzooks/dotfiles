@@ -49,6 +49,7 @@ Plug 'sheerun/vim-polyglot'
 " Git support
 " http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/
 Plug 'tpope/vim-fugitive'
+"FIXME  set statusline+= %{FugitiveStatusline()}
 Plug 'airblade/vim-gitgutter'
 
 " comment code : use gc
@@ -76,8 +77,10 @@ Plug 'rhysd/vim-textobj-ruby'
 Plug 'adriaanzon/vim-textobj-matchit'
 
 " TODO
+" Track the engine.
+" Plugin 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. NOTE: Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -122,9 +125,11 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 "https://drivy.engineering/setting-up-vim-for-react/
 "linting
 Plug 'w0rp/ale'
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+" Less aggressive than the default '>>'
+let g:ale_sign_error = '●' 
 let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+" Less distracting when opening a new file
+let g:ale_lint_on_enter = 0 
 " Here’s how to install ESLint:"
 "yarn add --dev eslint babel-eslint eslint-plugin-react
 " and then configure it by runnning:
@@ -136,7 +141,6 @@ Plug 'skywind3000/asyncrun.vim'
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 " Initialize plugin system
 
-"Code Snippets TODO
 "https://github.com/tpope/vim-unimpaired TODO : check out sometime
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<Tab>'
@@ -147,17 +151,18 @@ let g:user_emmet_settings = {
   \}
 
 " Plug 'MaxMEllon/vim-jsx-pretty'
-" let g:vim_jsx_pretty_colorful_config = 1 " default 0
+" default 0
+" let g:vim_jsx_pretty_colorful_config = 1 
 
 " Plug 'leafgarland/typescript-vim'
 
 "" session management, auto file save
-"Plug 'thaerkh/vim-workspace'
+Plug 'thaerkh/vim-workspace'
 ""session workspace plugin
-"let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 "" let g:workspace_undodir='~/.undodir'
-"let g:workspace_autosave_always = 1
-" let g:workspace_session_disable_on_args = 1
+let g:workspace_autosave_always = 1
+let g:workspace_session_disable_on_args = 1
 
 " provides automatic closing of quotes, parenthesis, brackets, etc., 
 Plug 'raimondi/delimitmate'
@@ -210,7 +215,8 @@ call plug#end()
 " Plug 'tpope/vim-dispatch'
 
 " Plug 'luochen1990/rainbow'
-" let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+"0 if you want to enable it later via :RainbowToggle
+" let g:rainbow_active = 1 
 
 " Plug 'junegunn/vim-easy-align'
 

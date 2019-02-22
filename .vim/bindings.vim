@@ -70,11 +70,3 @@ nmap <Leader>G :Commits<CR>
 " search in project
 nmap <Leader>a :Rg<Space>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ARROW KEYS ARE UNACCEPTABLE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-map <Left>  :echoe "Use h!"<CR>
-map <Right> :echoe "Use l!"<CR>
-map <Up>    :echoe "Use k!"<CR>
-map <Down>  :echoe "Use j!"<CR>

@@ -13,7 +13,8 @@ syntax on
 filetype plugin indent on
 filetype plugin on
 
-set path+=**                    " Useful for :find command
+" Useful for :find command
+set path+=**
 
 " ================ Indentation ======================
 set autoindent
@@ -30,14 +31,17 @@ set textwidth=79
 set wrap
 
 " ================ Scrolling ========================
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+"Start scrolling when we're 8 lines away from margins
+set scrolloff=8         
 set sidescrolloff=15
 set sidescroll=1
 set mouse=a
 
 " ================ Completion =======================
-set wildmode=list:full      "When more than one match, list all matches and
-                            "complete first match.
+"When more than one match, list all matches and
+"complete first match.
+set wildmode=list:full
+                            
 set wildmenu
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
@@ -118,16 +122,15 @@ set laststatus=2
 set ruler
 
 if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j " Delete comment character when joining commented lines
+  " Delete comment character when joining commented lines
+  set formatoptions+=j 
 endif
 
 " status line
-" set statusline=
 " set statusline+=%f\ %2*%m\ %1*%h
 " set statusline+=%#warningmsg#
 " set statusline+=%{fugitive#statusline()}
-" set statusline+=%*
-" set statusline+=%r%=[%{&encoding}\ %{&fileformat}\ %{strlen(&ft)?&ft:'none'}]\ %12.(%c:%l/%L%)
+" set statusline+=%* set statusline+=%r%=[%{&encoding}\ %{&fileformat}\ %{strlen(&ft)?&ft:'none'}]\ %12.(%c:%l/%L%)
 
 " tag support
 set tags=./tags;

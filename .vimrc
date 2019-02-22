@@ -2,7 +2,9 @@
 " " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" common code goes here
 let mapleader = ","
+set statusline= ""
 
 source $HOME/.vim/myplugins.vim
 source $HOME/.vim/basics.vim
