@@ -116,7 +116,7 @@ export EDITOR='vim'
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -182,8 +182,6 @@ export LDFLAGS=-L/usr/local/opt/openssl/lib
 export CPPFLAGS=-I/usr/local/opt/openssl/include
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
-# echo 'Ruby version : ' `ruby -v`
-
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # FIXME not working
@@ -193,6 +191,7 @@ bindkey '^;;' autosuggest-execute
 # brew install zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # brew install autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
