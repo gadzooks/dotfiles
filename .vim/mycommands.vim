@@ -13,3 +13,5 @@ command! -bang -nargs=* SearchInAll call fzf#vim#grep('rg --column --line-number
 command! -bang -nargs=* Search call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 nmap <Leader>s :Search<CR>
 nmap <Leader>S :SearchInAll<CR>
+nmap gs :Gstatus<CR>
+nmap gd :Gdiff<CR>

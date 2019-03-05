@@ -37,24 +37,31 @@ let g:rails_projections = {
 
 
 "Plug 'tpope/vim-rbenv'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rake'
+" Plug 'tpope/vim-bundler'
+" Plug 'tpope/vim-rake'
 
 " Syntax highlighter plugins
 " Plug 'kchmck/vim-coffee-script'
 " Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 Plug 'sheerun/vim-polyglot'
+Plug 'leafgarland/typescript-vim'
 
 " Git support
 " http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/
 Plug 'tpope/vim-fugitive'
+nnoremap <leader>gs :Gstatus<CR>
+" nnoremap <leader>gp :Gpush<CR>
+" nnoremap <leader>gw :Gwrite<CR>
 "FIXME  set statusline+= %{FugitiveStatusline()}
+
+"Enables :Gbrowse from fugitive.vim to open GitHub URLs.
+Plug 'tpope/vim-rhubarb'
+let g:github_enterprise_urls = ['https://github.com/NavigatingCancer/navigatingcare-components', 'https://github.com/NavigatingCancer/gc']
 Plug 'airblade/vim-gitgutter'
 
 " comment code : use gc
 Plug 'tpope/vim-commentary'
-
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -78,18 +85,17 @@ Plug 'adriaanzon/vim-textobj-matchit'
 
 " TODO
 " Track the engine.
-" Plugin 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-" Trigger configuration. NOTE: Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" Plug 'honza/vim-snippets'
+" " Trigger configuration. NOTE: Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" " If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
 
-" Hitting ctrl-_ will initiate a search for the most recent open tag above that is not closed
-Plug 'docunext/closetag.vim'
-let g:closetag_html_style=1
+" " Hitting ctrl-_ will initiate a search for the most recent open tag above that is not closed
+" Plug 'docunext/closetag.vim'
+" let g:closetag_html_style=1
 
 Plug 'ervandew/supertab'
 " Plug 'ludovicchabant/vim-gutentags'
@@ -124,16 +130,16 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 "https://drivy.engineering/setting-up-vim-for-react/
 "linting
-Plug 'w0rp/ale'
-" Less aggressive than the default '>>'
-let g:ale_sign_error = '●' 
-let g:ale_sign_warning = '.'
-" Less distracting when opening a new file
-let g:ale_lint_on_enter = 0 
-" Here’s how to install ESLint:"
-"yarn add --dev eslint babel-eslint eslint-plugin-react
-" and then configure it by runnning:
-"eslint --init
+"Plug 'w0rp/ale'
+"" Less aggressive than the default '>>'
+"let g:ale_sign_error = '●'
+"let g:ale_sign_warning = '.'
+"" Less distracting when opening a new file
+"let g:ale_lint_on_enter = 0 
+"" Here’s how to install ESLint:"
+""yarn add --dev eslint babel-eslint eslint-plugin-react
+"" and then configure it by runnning:
+""eslint --init
 
 "yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier
 "
@@ -152,7 +158,9 @@ let g:user_emmet_settings = {
 
 " Plug 'MaxMEllon/vim-jsx-pretty'
 " default 0
-" let g:vim_jsx_pretty_colorful_config = 1 
+" let g:vim_jsx_pretty_colorful_config = 1
+
+" Plug 'flazz/vim-colorschemes'
 
 " Plug 'leafgarland/typescript-vim'
 
@@ -164,8 +172,23 @@ let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave_always = 1
 let g:workspace_session_disable_on_args = 1
 
-" provides automatic closing of quotes, parenthesis, brackets, etc., 
+" provides automatic closing of quotes, parenthesis, brackets, etc.,
 Plug 'raimondi/delimitmate'
+
+" Usage:
+"     :call CmdAlias('<lhs>', '<rhs>', [flags])
+"     or
+"     :Alias <lhs> <rhs> [flags]
+                                                                             
+"     :UnAlias <lhs> ...
+"     :Aliases [<lhs> ...]
+
+" Ex:
+"     :Alias runtime Runtime
+"     :Alias find Find
+"     :Aliases
+"     :UnAlias find
+Plug 'konfekt/vim-alias'
 
 " vim performance/profiling plugin
 " https://github.com/bling/minivimrc
@@ -211,8 +234,8 @@ call plug#end()
 " endif
 " let g:deoplete#enable_at_startup = 1
 
-" Plug 'thoughtbot/vim-rspec'
-" Plug 'tpope/vim-dispatch'
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-dispatch'
 
 " Plug 'luochen1990/rainbow'
 "0 if you want to enable it later via :RainbowToggle

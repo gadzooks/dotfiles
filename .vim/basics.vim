@@ -7,8 +7,10 @@ set encoding=utf-8
 
 " set noswapfile
 set backup
-set backupdir=/tmp/backups
-set directory=/tmp/backups
+
+set backupdir=./.backup,.,/tmp
+"'directory' option controls where swap files go. If your working directory is not writable, Vim will put the swap file in one of the specified places.
+set directory=$HOME/.vim/swapfiles//
 syntax on
 filetype plugin indent on
 filetype plugin on
@@ -83,6 +85,15 @@ set title                       " show title in xterm
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
+" autocmd FileType ruby,eruby
+"       \ set foldmethod=expr |
+"       \ set foldexpr=getline(v:lnum)=~'^\\s*#' |
+"       \ exe "normal zM``"
+
+autocmd FileType ruby,eruby
+      \ set foldmethod=expr |
+      \ set foldexpr=getline(v:lnum)=~'^\\s*#'
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -147,11 +158,15 @@ let &colorcolumn="80,".join(range(120,999),",")
 " automatically set paste when pasting and then disable afterwards
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
-
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-
 function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
   set paste
   return ""
 endfunction
+
+" (slightly) better git diff colors
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=white
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=white
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=white
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=white

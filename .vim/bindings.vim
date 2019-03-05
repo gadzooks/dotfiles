@@ -6,10 +6,6 @@
 " nnoremap k gk
 " nnoremap ii <Esc>
 
-" turn off highlighting when esc is pressed
-" FIXME : this starts vim in REPLACE mode.
- " nnoremap <esc> :noh<return><esc>
-
  " Swap v and CTRL-V, because Block mode is more useful that Visual mode
 nnoremap    v   <C-V>
 nnoremap <C-V>     v
@@ -31,16 +27,16 @@ vnoremap <C-V>     v
 
 "fzf related bindings
 " search filenames for files tracked by git
-nmap <Leader>f :GFiles<CR>
+nmap <Leader>F :GFiles<CR>
 " search all filenames
-nmap <Leader>F :Files<CR>
+nmap <Leader>f :Files<CR>
 " search all filenames in buffers
 nmap <Leader>b :Buffers<CR>
 " search history
 nmap <Leader>h :History<CR>
 " search tags
-nmap <Leader>t :BTags<CR>
-nmap <Leader>T :Tags<CR>
+nmap <Leader>T :BTags<CR>
+nmap <Leader>t :Tags<CR>
 
 " search in current buffer
 nmap <Leader>l :BLines<CR>
@@ -69,4 +65,3 @@ nmap <Leader>G :Commits<CR>
 
 " search in project
 nmap <Leader>a :Rg<Space>
-

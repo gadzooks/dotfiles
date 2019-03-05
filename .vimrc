@@ -13,6 +13,8 @@ source $HOME/.vim/bindings.vim
 source $HOME/.vim/windows.vim
 source $HOME/.vim/mycommands.vim
 
+" :call CmdAlias('find','Tags')
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Load local config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
