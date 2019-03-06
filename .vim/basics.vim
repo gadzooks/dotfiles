@@ -1,26 +1,31 @@
 " Set default encoding to UTF-8.
 set encoding=utf-8
 
-" set nobackup                    " Don't keep a backup file
-" set writebackup                 " … but do keep a backup file during writes
-" set directory-=.                " Don't store swapfiles in the current directory
-
-" set noswapfile
 set backup
+set backupdir=$HOME/.vim/backups//
 
-set backupdir=./.backup,.,/tmp
 "'directory' option controls where swap files go. If your working directory is not writable, Vim will put the swap file in one of the specified places.
 set directory=$HOME/.vim/swapfiles//
+
+" save undo information
+set undodir=$HOME/.vim/.vim-undo//
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+"backspace not working with mucomplete plugin and this fixes it
+set bs=2
+
 syntax on
 filetype plugin indent on
 filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 " Useful for :find command
 set path+=**
 
 " ================ Indentation ======================
 set autoindent
-set expandtab
 set expandtab
 set formatoptions=tcqrn1
 set noshiftround
@@ -42,21 +47,21 @@ set mouse=a
 " ================ Completion =======================
 "When more than one match, list all matches and
 "complete first match.
-set wildmode=list:full
+" set wildmode=list:full
                             
-set wildmenu
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
-set complete=.,b,u,]            " Pull from keywords for completion in the current file, other buffers (closed or still open), and from the current tags file.
-set suffixes+=.old              " set of file name suffixes that will be given a lower priority when it comes to matching wildcards
+" set wildmenu
+" set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+" set wildignore+=*vim/backups*
+" set wildignore+=*sass-cache*
+" set wildignore+=*DS_Store*
+" set wildignore+=vendor/rails/**
+" set wildignore+=vendor/cache/**
+" set wildignore+=*.gem
+" set wildignore+=log/**
+" set wildignore+=tmp/**
+" set wildignore+=*.png,*.jpg,*.gif
+" set complete=.,b,u,]            " Pull from keywords for completion in the current file, other buffers (closed or still open), and from the current tags file.
+" set suffixes+=.old              " set of file name suffixes that will be given a lower priority when it comes to matching wildcards
 
 
 " automatically delete empty space at end of lines
@@ -122,12 +127,6 @@ hi SpellBad cterm=underline
 " lines to mark lines that extend off-screen. For more info, see :h listchars.
 set list
 set listchars=extends:»,precedes:«,tab:▸\
-
-" save undo information
-set undodir=$HOME/.vim-undo
-set undofile
-set undolevels=1000
-set undoreload=10000
 
 set laststatus=2
 set ruler

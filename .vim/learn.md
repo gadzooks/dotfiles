@@ -1,5 +1,4 @@
 # learn vim
-
 - leader is ,
 
 ## vim basics
@@ -11,7 +10,6 @@
 - zM : close all folds
 - zR : open all folds
 - :only : close all other buffers
-
 
 ## windows
 - C-w = : make split windows equal size
