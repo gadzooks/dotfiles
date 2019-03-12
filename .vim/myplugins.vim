@@ -32,11 +32,20 @@ let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#completion_delay = 200
 highlight Pmenu ctermbg=blue guibg=gray
 
-" Another auto complete tool
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-" :CocInstall coc-tsserver
-" :CocInstall coc-json
-" :CocInstall coc-html
+if has('nvim')
+  " Another auto complete tool
+  " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+  " :CocInstall coc-tsserver
+  " :CocInstall coc-json
+  " :CocInstall coc-html
+
+  " pip3 install neovim
+  " Plug 'HerringtonDarkholme/yats.vim'
+  " Plug 'Shougo/deoplete.nvim'
+  " Plug 'mhartington/nvim-typescript'
+  " Enable deoplete at startup
+  " let g:deoplete#enable_at_startup = 1
+endif
 
 " NOTE Make sure you use single quotes
 " ruby / rails plugins
@@ -53,7 +62,6 @@ let g:rails_projections = {
       \     'type': 'test'
       \   }
       \}
-
 
 
 " Git support
@@ -142,7 +150,7 @@ let g:js_context_colors_enabled=1
 " react / node
 " https://vimawesome.com/plugin/vim-react-snippets
 "nodejs
-Plug 'myhere/vim-nodejs-complete'
+" Plug 'myhere/vim-nodejs-complete'
 
 Plug 'MaxMEllon/vim-jsx-pretty'
 " default 0
@@ -156,6 +164,10 @@ Plug 'peitalin/vim-jsx-typescript'
 
 "https://drivy.engineering/setting-up-vim-for-react/
 "linting
+"" Enable completion where available.
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 1
+let g:ale_set_balloons = 1
 Plug 'w0rp/ale'
 " FIXME : This seems to start brakeman going in rails, so only enabling for
 " javascrip
@@ -183,6 +195,12 @@ let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave_always = 1
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autocreate = 1
+"navigate between errors quickly
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_pattern_options = {
+\ '\.rb$': {'ale_linters': ['rails_best_practices', 'reek', 'rubocop', 'standardrb', 'solargraph'], 'ale_fixers': ['rails_best_practices']},
+\}
 
 " provides automatic closing of quotes, parenthesis, brackets, etc.,
 Plug 'raimondi/delimitmate'
