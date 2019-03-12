@@ -44,7 +44,12 @@ if has('nvim')
   Plug 'Shougo/deoplete.nvim'
   Plug 'Shougo/neco-syntax'
 
+  " vim command autocomplete
+  Plug 'Shougo/neco-vim'
+
+  " deoplete source for typescript
   Plug 'mhartington/nvim-typescript'
+  let g:nvim_typescript#type_info_on_hold=1
   " Enable deoplete at startup
   let g:deoplete#enable_at_startup = 1
 
@@ -57,13 +62,41 @@ if has('nvim')
   " endif
   " TODO Plug 'jsfaint/gen_tags.vim'
 
-  Plug 'ayu-theme/ayu-vim' " or other package manager
-  "...
+  """"""""""""""""" colorschemes """""""""""""""""""""
   set termguicolors     " enable true colors support
-  let ayucolor="light"  " for light version of theme
-  let ayucolor="mirage" " for mirage version of theme
-  let ayucolor="dark"   " for dark version of theme
+
+  Plug 'ayu-theme/ayu-vim' " or other package manager
+  " let ayucolor="light"  " for light version of theme
+  " let ayucolor="mirage" " for mirage version of theme
+  " let ayucolor="dark"   " for dark version of theme
   " colorscheme ayu
+
+  Plug 'joshdick/onedark.vim'
+  Plug 'morhetz/gruvbox'
+  """"""""""""""""" colorschemes """""""""""""""""""""
+else
+  "https://drivy.engineering/setting-up-vim-for-react/
+  "linting
+  "" Enable completion where available.
+  " This setting must be set before ALE is loaded.
+  let g:ale_completion_enabled = 1
+  " " let g:ale_set_balloons = 1
+  Plug 'w0rp/ale'
+  " " FIXME : This seems to start brakeman going in rails, so only enabling for
+  " " javascrip
+  let g:ale_linters = {
+        \   'javascript': ['eslint'],
+        \   'css': ['eslint'],
+        \}
+  " " Set this. Airline will handle the rest.
+  let g:airline#extensions#ale#enabled = 1
+  " " Set this in your vimrc file to disabling highlighting
+  let g:ale_set_highlights = 0
+  let g:ale_sign_column_always = 1
+  " Here’s how to install ESLint:"
+  "yarn add --dev eslint babel-eslint eslint-plugin-react
+  " and then configure it by runnning:
+  "eslint --init
 
 endif
 
@@ -100,13 +133,18 @@ Plug 'airblade/vim-gitgutter'
 " comment code : use gc
 Plug 'tpope/vim-commentary'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='bubblegum'
-let g:airline_section_a = ''
-let g:airline_section_y = ''
-let g:airline_skip_empty_sections = 1
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+let g:airline_theme='onedark'
 
 "to change it to 'Hello world!'
 "Now press cs'<q> to change it to <q>Hello world!</q>
@@ -121,6 +159,7 @@ Plug 'adriaanzon/vim-textobj-matchit'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
 Plug 'haya14busa/vim-textobj-function-syntax'
+
 "var / vir to select between def / end
 Plug 'rhysd/vim-textobj-ruby'
 
@@ -181,31 +220,6 @@ Plug 'peitalin/vim-jsx-typescript'
 " TODO : change syntax highlight colors based on here : https://vimawesome.com/plugin/vim-jsx-typescript
 " TODO : https://vimawesome.com/plugin/vim-babel
 " TODO : ctags auto update : https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
-
-"https://drivy.engineering/setting-up-vim-for-react/
-"linting
-"" Enable completion where available.
-" This setting must be set before ALE is loaded.
-let g:ale_completion_enabled = 1
-let g:ale_set_balloons = 1
-Plug 'w0rp/ale'
-" FIXME : This seems to start brakeman going in rails, so only enabling for
-" javascrip
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'css': ['eslint'],
-\}
-" Less distracting when opening a new file
-let g:ale_lint_on_enter = 0
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
-" Set this in your vimrc file to disabling highlighting
-let g:ale_set_highlights = 0
-let g:ale_sign_column_always = 1
-" Here’s how to install ESLint:"
-"yarn add --dev eslint babel-eslint eslint-plugin-react
-" and then configure it by runnning:
-"eslint --init
 
 " session management, auto file save
 Plug 'thaerkh/vim-workspace'
