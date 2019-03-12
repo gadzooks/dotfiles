@@ -40,11 +40,11 @@ if has('nvim')
   " :CocInstall coc-html
 
   " pip3 install neovim
-  " Plug 'HerringtonDarkholme/yats.vim'
-  " Plug 'Shougo/deoplete.nvim'
-  " Plug 'mhartington/nvim-typescript'
+  Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'mhartington/nvim-typescript'
   " Enable deoplete at startup
-  " let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_at_startup = 1
 endif
 
 " NOTE Make sure you use single quotes
