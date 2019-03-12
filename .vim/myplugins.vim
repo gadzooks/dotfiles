@@ -42,9 +42,29 @@ if has('nvim')
   " pip3 install neovim
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/neco-syntax'
+
   Plug 'mhartington/nvim-typescript'
   " Enable deoplete at startup
   let g:deoplete#enable_at_startup = 1
+
+  " Plug 'vim-scripts/SyntaxComplete'
+  " if has("autocmd") && exists("+omnifunc")
+  "   autocmd Filetype *
+  "         \	if &omnifunc == "" |
+  "         \		setlocal omnifunc=syntaxcomplete#Complete |
+  "         \	endif
+  " endif
+  " TODO Plug 'jsfaint/gen_tags.vim'
+
+  Plug 'ayu-theme/ayu-vim' " or other package manager
+  "...
+  set termguicolors     " enable true colors support
+  let ayucolor="light"  " for light version of theme
+  let ayucolor="mirage" " for mirage version of theme
+  let ayucolor="dark"   " for dark version of theme
+  " colorscheme ayu
+
 endif
 
 " NOTE Make sure you use single quotes

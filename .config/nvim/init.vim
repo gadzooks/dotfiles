@@ -1,1 +1,3 @@
 source ~/.vimrc
+
+colorscheme ayu
