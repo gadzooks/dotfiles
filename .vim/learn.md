@@ -60,7 +60,7 @@ ctrl-v open buffer in v-split
 
 ## textobj
 - m - method / block, M - module class
-- use var - select block, ar to increase block and ir to decrease
+> - use var - select block, ar to increase block and ir to decrease
 - use vam / vaM - select block, im(?) to decrease
 - cir / car / cim / ciM / caM / ciM = change inside / around ruby block / class / module
 - dir / dar = delete inside / around ruby block

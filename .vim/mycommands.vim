@@ -14,4 +14,3 @@ command! -bang -nargs=* Search call fzf#vim#grep('rg --column --line-number --no
 nmap <Leader>s :Search<CR>
 nmap <Leader>S :SearchInAll<CR>
 nmap gs :Gstatus<CR>
-nmap gd :Gdiff<CR>

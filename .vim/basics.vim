@@ -17,8 +17,6 @@ set undoreload=10000
 set bs=2
 
 syntax on
-filetype plugin indent on
-filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 " Useful for :find command
@@ -74,7 +72,7 @@ set showcmd
 set cursorline
 
 set number
-set relativenumber                " relative line numbers! How cool is that?!
+" set relativenumber                " relative line numbers! How cool is that?!
 set numberwidth=3               " How many columns to use for the line number
 
 set autowrite                   " Automatically :write before running commands

@@ -28,7 +28,15 @@ set completeopt+=noselect
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 let g:mucomplete#enable_auto_at_startup = 1
-highlight Pmenu ctermbg=gray guibg=gray
+" delay in miliiseconds before autocomplete starts
+let g:mucomplete#completion_delay = 200
+highlight Pmenu ctermbg=blue guibg=gray
+
+" Another auto complete tool
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" :CocInstall coc-tsserver
+" :CocInstall coc-json
+" :CocInstall coc-html
 
 " NOTE Make sure you use single quotes
 " ruby / rails plugins
@@ -47,12 +55,6 @@ let g:rails_projections = {
       \}
 
 
-" Syntax highlighter plugins
-Plug 'kchmck/vim-coffee-script'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'sheerun/vim-polyglot'
-Plug 'leafgarland/typescript-vim'
 
 " Git support
 " http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/
@@ -84,12 +86,15 @@ let g:airline_skip_empty_sections = 1
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'adelarsq/vim-matchit'
-Plug 'kana/vim-textobj-user'
-"var / vir to select between def / end
-Plug 'rhysd/vim-textobj-ruby'
 "am/im to select between matchit sections
 Plug 'adriaanzon/vim-textobj-matchit'
 
+" text objects
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-function'
+Plug 'haya14busa/vim-textobj-function-syntax'
+"var / vir to select between def / end
+Plug 'rhysd/vim-textobj-ruby'
 
 "use ripgrep inside vim
 ":Rg <string|pattern>
@@ -123,18 +128,61 @@ Plug 'skywind3000/asyncrun.vim'
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 " Initialize plugin system
 
-" Plug 'MaxMEllon/vim-jsx-pretty'
-" default 0
-" let g:vim_jsx_pretty_colorful_config = 1
-" Plug 'leafgarland/typescript-vim'
+"json highlighter
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
-"" session management, auto file save
+" Syntax highlighter plugins
+Plug 'sheerun/vim-polyglot'
+" Plug 'kchmck/vim-coffee-script'
+Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+Plug 'bigfish/vim-js-context-coloring'
+let g:js_context_colors_enabled=1
+
+" react / node
+" https://vimawesome.com/plugin/vim-react-snippets
+"nodejs
+Plug 'myhere/vim-nodejs-complete'
+
+Plug 'MaxMEllon/vim-jsx-pretty'
+" default 0
+let g:vim_jsx_pretty_colorful_config = 1
+Plug 'leafgarland/typescript-vim'
+" NOTE depends on leafgarland/typescript-vim
+Plug 'peitalin/vim-jsx-typescript'
+" TODO : change syntax highlight colors based on here : https://vimawesome.com/plugin/vim-jsx-typescript
+" TODO : https://vimawesome.com/plugin/vim-babel
+" TODO : ctags auto update : https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+
+"https://drivy.engineering/setting-up-vim-for-react/
+"linting
+Plug 'w0rp/ale'
+" FIXME : This seems to start brakeman going in rails, so only enabling for
+" javascrip
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'css': ['eslint'],
+\}
+" Less distracting when opening a new file
+let g:ale_lint_on_enter = 0
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+" Set this in your vimrc file to disabling highlighting
+let g:ale_set_highlights = 0
+let g:ale_sign_column_always = 1
+" Here’s how to install ESLint:"
+"yarn add --dev eslint babel-eslint eslint-plugin-react
+" and then configure it by runnning:
+"eslint --init
+
+" session management, auto file save
 Plug 'thaerkh/vim-workspace'
-""session workspace plugin
+"session workspace plugin
 let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-"" let g:workspace_undodir='~/.undodir'
+"let g:workspace_undodir='~/.undodir'
 let g:workspace_autosave_always = 1
 let g:workspace_session_disable_on_args = 1
+let g:workspace_autocreate = 1
 
 " provides automatic closing of quotes, parenthesis, brackets, etc.,
 Plug 'raimondi/delimitmate'

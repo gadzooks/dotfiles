@@ -9,7 +9,7 @@ a reload='source ~/.zshrc'
 
 a gitlog="git log --graph --all"
 a gs='git status'
-a grep='rg'
+# a grep='rg'
 a be='bundle exec'
 
 u g

@@ -2,9 +2,11 @@
 " " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" common code goes here
+" common code that is needed before anything else loads up goes here
 let mapleader = ","
 set statusline= ""
+filetype plugin indent on
+filetype plugin on
 
 source $HOME/.vim/myplugins.vim
 source $HOME/.vim/basics.vim

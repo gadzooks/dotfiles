@@ -15,18 +15,6 @@
 " Plug 'ervandew/supertab'
 " Plug 'ludovicchabant/vim-gutentags'
 
-"https://drivy.engineering/setting-up-vim-for-react/
-"linting
-"Plug 'w0rp/ale'
-"" Less aggressive than the default '>>'
-"let g:ale_sign_error = '●'
-"let g:ale_sign_warning = '.'
-"" Less distracting when opening a new file
-"let g:ale_lint_on_enter = 0 
-"" Here’s how to install ESLint:"
-""yarn add --dev eslint babel-eslint eslint-plugin-react
-"" and then configure it by runnning:
-""eslint --init
 
 "yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier
 
@@ -60,6 +48,7 @@
 
 " ctags
 " set tags=tags;/
+
 
 " Plug 'vim-scripts/vim-auto-save'
 " sensible defaults
