@@ -1,6 +1,13 @@
 # learn vim
 - leader is ,
 
+## typescrip
+Mapping        Action
+-------------  --------------
+K              :TSDoc
+<leader>tdp    :TSDefPreview
+<c-]>          :TSTypeDef
+
 ## vim basics
 - * will search word under cursor
 - g, : last edited place in file

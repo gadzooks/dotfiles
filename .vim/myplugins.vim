@@ -33,25 +33,43 @@ let g:mucomplete#completion_delay = 200
 highlight Pmenu ctermbg=blue guibg=gray
 
 if has('nvim')
+  """"""""""""""""" colorschemes """""""""""""""""""""
+  set termguicolors     " enable true colors support
+  Plug 'ayu-theme/ayu-vim' " or other package manager
+  let ayucolor="light"  " for light version of theme
+  let ayucolor="mirage" " for mirage version of theme
+  let ayucolor="dark"   " for dark version of theme
+  " colorscheme ayu
+
+  Plug 'morhetz/gruvbox'
+  Plug 'joshdick/onedark.vim'
+  Plug 'mhartington/oceanic-next'
+  """"""""""""""""" colorschemes """""""""""""""""""""
+
   " Another auto complete tool
   " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
   " :CocInstall coc-tsserver
   " :CocInstall coc-json
   " :CocInstall coc-html
 
-  " pip3 install neovim
-  Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'HerringtonDarkholme/yats.vim'  "required for typescript-vim
+  " pip3 install neovim - required for deoplete
   Plug 'Shougo/deoplete.nvim'
+  let g:deoplete#enable_at_startup = 1
   Plug 'Shougo/neco-syntax'
 
   " vim command autocomplete
   Plug 'Shougo/neco-vim'
 
+  Plug 'Shougo/neoyank.vim'
+
+  " FIXME : does not work
   " deoplete source for typescript
   Plug 'mhartington/nvim-typescript'
   let g:nvim_typescript#type_info_on_hold=1
-  " Enable deoplete at startup
-  let g:deoplete#enable_at_startup = 1
+  "FIXME disable in favor of echodo once that starts working
+  let g:nvim_typescript#signature_complete=1
+  let g:nvim_typescript#default_mappings=1
 
   " Plug 'vim-scripts/SyntaxComplete'
   " if has("autocmd") && exists("+omnifunc")
@@ -62,18 +80,33 @@ if has('nvim')
   " endif
   " TODO Plug 'jsfaint/gen_tags.vim'
 
-  """"""""""""""""" colorschemes """""""""""""""""""""
-  set termguicolors     " enable true colors support
+  Plug 'Shougo/context_filetype.vim' "used by echodoc
+  let g:echodoc#enable_at_startup = 1
+  Plug 'Shougo/echodoc.vim'
+  let g:nvim_typescript#signature_complet = 0
+  set cmdheight=2
 
-  Plug 'ayu-theme/ayu-vim' " or other package manager
-  " let ayucolor="light"  " for light version of theme
-  " let ayucolor="mirage" " for mirage version of theme
-  " let ayucolor="dark"   " for dark version of theme
-  " colorscheme ayu
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+  " Required for operations modifying multiple buffers like rename.
+  set hidden
 
-  Plug 'joshdick/onedark.vim'
-  Plug 'morhetz/gruvbox'
-  """"""""""""""""" colorschemes """""""""""""""""""""
+  " on command line :
+  " nvim +PlugInstall +UpdateRemotePlugins +qa
+  " let g:LanguageClient_serverCommands = {
+  "       \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+  "       \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+  "       \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+  "       \ 'python': ['/usr/local/bin/pyls'],
+  "       \ }
+
+  " nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+  " " Or map each action separately
+  " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 else
   "https://drivy.engineering/setting-up-vim-for-react/
   "linting
@@ -98,8 +131,37 @@ else
   " and then configure it by runnning:
   "eslint --init
 
+  "navigate between errors quickly
+  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-j> <Plug>(ale_next_wrap)
+  let g:ale_pattern_options = {
+        \ '\.rb$': {'ale_linters': ['rails_best_practices', 'reek', 'rubocop', 'standardrb', 'solargraph'], 'ale_fixers': ['rails_best_practices']},
+        \}
+
+
 endif
 
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/1.x',
+  \ 'for': [
+    \ 'javascript',
+    \ 'typescript',
+    \ 'css',
+    \ 'less',
+    \ 'scss',
+    \ 'json',
+    \ 'graphql',
+    \ 'markdown',
+    \ 'vue',
+    \ 'lua',
+    \ 'php',
+    \ 'python',
+    \ 'ruby',
+    \ 'html',
+    \ 'swift' ] }
+
+Plug 'tpope/vim-unimpaired'
 " NOTE Make sure you use single quotes
 " ruby / rails plugins
 Plug 'tpope/vim-rails'
@@ -159,6 +221,9 @@ Plug 'adriaanzon/vim-textobj-matchit'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
 Plug 'haya14busa/vim-textobj-function-syntax'
+Plug 'vim-scripts/argtextobj.vim' " Function arguments as text objects: ia, aa
+" TODO try these snippets out
+" Plug 'mlaursen/vim-react-snippets'
 
 "var / vir to select between def / end
 Plug 'rhysd/vim-textobj-ruby'
@@ -202,7 +267,10 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 Plug 'sheerun/vim-polyglot'
 " Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
+
+" format jsx code
+Plug 'mxw/vim-jsx'
+
 Plug 'bigfish/vim-js-context-coloring'
 let g:js_context_colors_enabled=1
 
@@ -217,7 +285,7 @@ let g:vim_jsx_pretty_colorful_config = 1
 Plug 'leafgarland/typescript-vim'
 " NOTE depends on leafgarland/typescript-vim
 Plug 'peitalin/vim-jsx-typescript'
-" TODO : change syntax highlight colors based on here : https://vimawesome.com/plugin/vim-jsx-typescript
+" change syntax highlight colors based on here : https://vimawesome.com/plugin/vim-jsx-typescript
 " TODO : https://vimawesome.com/plugin/vim-babel
 " TODO : ctags auto update : https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
 
@@ -229,13 +297,6 @@ let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 let g:workspace_autosave_always = 1
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autocreate = 1
-"navigate between errors quickly
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-let g:ale_pattern_options = {
-\ '\.rb$': {'ale_linters': ['rails_best_practices', 'reek', 'rubocop', 'standardrb', 'solargraph'], 'ale_fixers': ['rails_best_practices']},
-\}
-
 " provides automatic closing of quotes, parenthesis, brackets, etc.,
 Plug 'raimondi/delimitmate'
 

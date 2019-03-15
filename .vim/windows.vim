@@ -8,6 +8,3 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-t> <C-w>t
-
-" Make splits the same width
-nnoremap <leader>z <C-w>=

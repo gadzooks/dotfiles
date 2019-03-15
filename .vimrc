@@ -4,7 +4,7 @@ set nocompatible
 
 " common code that is needed before anything else loads up goes here
 let mapleader = ","
-set statusline= ""
+" set statusline= ""
 filetype plugin indent on
 filetype plugin on
 
@@ -20,6 +20,6 @@ source $HOME/.vim/mycommands.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Load local config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable($HOME . "/.vimrc.local")
+" if filereadable($HOME . "/.vimrc.local")
 "  source ~/.vimrc.local
-endif
+" endif

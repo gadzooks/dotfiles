@@ -72,7 +72,7 @@ set showcmd
 set cursorline
 
 set number
-" set relativenumber                " relative line numbers! How cool is that?!
+set relativenumber                " relative line numbers! How cool is that?!
 set numberwidth=3               " How many columns to use for the line number
 
 set autowrite                   " Automatically :write before running commands
@@ -131,7 +131,7 @@ set ruler
 
 if v:version > 703 || v:version == 703 && has("patch541")
   " Delete comment character when joining commented lines
-  set formatoptions+=j 
+  set formatoptions+=j
 endif
 
 " status line
