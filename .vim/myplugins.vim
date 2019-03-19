@@ -56,13 +56,8 @@ if has('nvim')
   " pip3 install neovim - required for deoplete
   Plug 'Shougo/deoplete.nvim'
   let g:deoplete#enable_at_startup = 1
-  Plug 'Shougo/neco-syntax'
-
-  " vim command autocomplete
-  Plug 'Shougo/neco-vim'
-
-  Plug 'Shougo/neoyank.vim'
-
+  Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+  Plug 'zchee/deoplete-go'
   " FIXME : does not work
   " deoplete source for typescript
   Plug 'mhartington/nvim-typescript'
@@ -70,6 +65,13 @@ if has('nvim')
   "FIXME disable in favor of echodo once that starts working
   let g:nvim_typescript#signature_complete=1
   let g:nvim_typescript#default_mappings=1
+
+  Plug 'Shougo/neco-syntax'
+  " vim command autocomplete
+  Plug 'Shougo/neco-vim'
+
+  Plug 'Shougo/neoyank.vim'
+
 
   " Plug 'vim-scripts/SyntaxComplete'
   " if has("autocmd") && exists("+omnifunc")
@@ -94,7 +96,7 @@ if has('nvim')
   set hidden
 
   " on command line :
-  " nvim +PlugInstall +UpdateRemotePlugins +qa
+  " nvim +PlugInstall +UpdateRemotePlugs +qa
   " let g:LanguageClient_serverCommands = {
   "       \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
   "       \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
@@ -140,6 +142,7 @@ else
 
 
 endif
+Plug 'romainl/vim-qf'
 
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -197,15 +200,35 @@ Plug 'tpope/vim-commentary'
 
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightLineFilename',
+      \   'gitbranch': 'fugitive#head',
+      \ },
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
       \ }
+
+function! LightLineFilename()
+  let name = ""
+  let subs = split(expand('%'), "/") 
+  let i = 1
+  for s in subs
+    let parent = name
+    if  i == len(subs)
+      let name = parent . '/' . s
+    elseif i == 1
+      let name = s
+    else
+      let name = parent . '/' . strpart(s, 0, 2)
+    endif
+    let i += 1
+  endfor
+  return name
+endfunction
+
 let g:airline_theme='onedark'
 
 "to change it to 'Hello world!'
@@ -224,6 +247,25 @@ Plug 'haya14busa/vim-textobj-function-syntax'
 Plug 'vim-scripts/argtextobj.vim' " Function arguments as text objects: ia, aa
 " TODO try these snippets out
 " Plug 'mlaursen/vim-react-snippets'
+" https://vimawesome.com/plugin/vim-react-snippets
+" Track the engine.
+" FIXME : seems to interfere with auto complete plugin
+" Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+" Plug 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Currently, es6 version of snippets is available in es6 branch only
+Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
+Plug 'honza/vim-snippets' "optional
 
 "var / vir to select between def / end
 Plug 'rhysd/vim-textobj-ruby'
@@ -273,11 +315,9 @@ Plug 'mxw/vim-jsx'
 
 Plug 'bigfish/vim-js-context-coloring'
 let g:js_context_colors_enabled=1
-
-" react / node
-" https://vimawesome.com/plugin/vim-react-snippets
-"nodejs
-" Plug 'myhere/vim-nodejs-complete'
+ " NOTE: assumes that you are using some other javascript plugin for syntax highlighting and it attaches itself onto
+ " the JavaScriptAll cluster. So put this after vim-js-context-coloring
+Plug 'glanotte/vim-jasmine'
 
 Plug 'MaxMEllon/vim-jsx-pretty'
 " default 0
@@ -304,7 +344,7 @@ Plug 'raimondi/delimitmate'
 "     :call CmdAlias('<lhs>', '<rhs>', [flags])
 "     or
 "     :Alias <lhs> <rhs> [flags]
-                                                                             
+
 "     :UnAlias <lhs> ...
 "     :Aliases [<lhs> ...]
 
@@ -315,6 +355,11 @@ Plug 'raimondi/delimitmate'
 "     :UnAlias find
 Plug 'konfekt/vim-alias'
 
+
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" let g:go_disable_autoinstall = 1
+" let g:go_fmt_autosave = 1
+" let g:go_bin_path = expand("$HOME/.gvm/pkgsets/go1.2.1/global/bin/")
 
 call plug#end()
 " NOTE: Reload .vimrc and :PlugInstall to install plugins.

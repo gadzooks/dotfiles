@@ -1,3 +1,19 @@
+- javascript debugger
+- put line : debugger in file
+
+# New stuff
+- ga : search current word in current dir
+- f<alphabet> : go to first occurence of alphabet
+
+- <Leader> q : toggle last opened buffer
+- <Leader> l : search for word in current buffer
+- <Leader> L : search for workd in all open buffers
+- <Leader> g : commits for this file
+- <Leader> u : ul for this file
+- ;;         : close current buffer
+
+- bd          : buffer distroy
+
 # learn vim
 - leader is ,
 
@@ -17,6 +33,7 @@ K              :TSDoc
 - zM : close all folds
 - zR : open all folds
 - :only : close all other buffers
+- ga : search current word in current dir
 
 ## windows
 - C-w = : make split windows equal size
@@ -77,7 +94,7 @@ ctrl-v open buffer in v-split
 - TODO
 
 ## todo
-- vim-unimpaireda
+- vim-unimpaired
 - https://github.com/b4b4r07/enhancd
 
 ## zsh
@@ -99,4 +116,4 @@ TODO
 
 ## FIXME
 - after using j/k, ctrl-j/k does not switch tmux panes unless C-a is used
-    - tmux dont kill tab without confirmation : ctrl-a x ?
+- tmux dont kill tab without confirmation : ctrl-a x ?

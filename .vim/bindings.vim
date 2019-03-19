@@ -63,5 +63,13 @@ nmap <Leader>M :Maps<CR>
 nmap <Leader>g :BCommits<CR>
 nmap <Leader>G :Commits<CR>
 
+nmap <Leader>u :Snippets<CR>
+
 " search in project
 nmap <Leader>a :Rg<Space>
+nmap ga :Rg <cword><CR>
+nmap <silent>;; :q<CR>
+nmap <Leader>q :b#<cr>
+
+" destroy current buffer and show previous one
+nmap bd :b#\|bd #<CR>

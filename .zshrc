@@ -188,6 +188,9 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^;' autosuggest-accept
 bindkey '^;;' autosuggest-execute
 
+# go lang
+export PATH="/usr/local/go/:$PATH"
+export GOPATH="/usr/local/go/" 
 # brew install zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme

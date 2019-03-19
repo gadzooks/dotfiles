@@ -7,6 +7,7 @@ let mapleader = ","
 " set statusline= ""
 filetype plugin indent on
 filetype plugin on
+syntax on
 
 source $HOME/.vim/myplugins.vim
 source $HOME/.vim/basics.vim

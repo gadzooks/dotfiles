@@ -16,7 +16,6 @@ set undoreload=10000
 "backspace not working with mucomplete plugin and this fixes it
 set bs=2
 
-syntax on
 set omnifunc=syntaxcomplete#Complete
 
 " Useful for :find command
