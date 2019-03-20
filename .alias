@@ -8,6 +8,7 @@ a tn='tmux new -s'
 a reload='source ~/.zshrc'
 
 a gitlog="git log --graph --all"
+a yadmlog="yadm log --graph --all"
 a gs='git status'
 # a grep='rg'
 a be='bundle exec'
