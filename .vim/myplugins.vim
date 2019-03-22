@@ -212,6 +212,7 @@ let g:lightline = {
       \ }
 
 function! LightLineFilename()
+  return expand('%')
   let name = ""
   let subs = split(expand('%'), "/") 
   let i = 1
@@ -298,8 +299,8 @@ nnoremap <C-p> :Files<Cr>
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-Plug 'skywind3000/asyncrun.vim'
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+" Plug 'skywind3000/asyncrun.vim'
+" autocmd BufWritePost *.js AsyncRun -post=checktime ~/node_modules/.bin/eslint --fix %
 " Initialize plugin system
 
 "json highlighter
