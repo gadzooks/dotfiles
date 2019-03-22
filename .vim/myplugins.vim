@@ -44,6 +44,7 @@ if has('nvim')
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
   Plug 'mhartington/oceanic-next'
+  Plug 'rakr/vim-one'
   """"""""""""""""" colorschemes """""""""""""""""""""
 
   " Another auto complete tool
@@ -356,6 +357,16 @@ Plug 'raimondi/delimitmate'
 "     :UnAlias find
 Plug 'konfekt/vim-alias'
 
+"allows * and # searches to occur on the current visual selection.
+Plug 'nelstrom/vim-visual-star-search'
+
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+let NERDTreeHijackNetrw = 0
+noremap <silent> <leader>n :NERDTreeToggle<CR> <C-w>=
+noremap <silent> <leader>N :NERDTreeFind<CR> <C-w>=
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+let g:NERDTreeUpdateOnCursorHold = 0
+let g:NERDTreeUpdateOnWrite      = 0
 
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " let g:go_disable_autoinstall = 1
