@@ -1,18 +1,39 @@
+## todo
+- vim-unimpaired
+- https://github.com/b4b4r07/enhancd
+Plug 'wellle/targets.vim'
+
+Plug 'rhysd/clever-f.vim'
+let g:clever_f_across_no_line = 1
+let g:clever_f_fix_key_direction = 1
+let g:clever_f_timeout_ms = 3000
+
+Plug 'michaeljsmith/vim-indent-object'
+
+Plug 'tommcdo/vim-lion'
+let g:lion_squeeze_spaces = 1
+## todo
+
 - javascript debugger
 - put line : debugger in file
 
 # New stuff
 - ga : search current word in current dir
 - f<alphabet> : go to first occurence of alphabet
+- select with visual block and then use * / # to search for entire selection
 
 - <Leader> q : toggle last opened buffer
 - <Leader> l : search for word in current buffer
 - <Leader> L : search for workd in all open buffers
 - <Leader> g : commits for this file
 - <Leader> u : ul for this file
+- <Leader> n : NerdTree
 - ;;         : close current buffer
 
 - bd          : buffer distroy
+
+- https://github.com/wellle/targets.vim
+
 
 # learn vim
 - leader is ,
@@ -93,9 +114,6 @@ ctrl-v open buffer in v-split
 ## vim snippets
 - TODO
 
-## todo
-- vim-unimpaired
-- https://github.com/b4b4r07/enhancd
 
 ## zsh
 j - jump to commonly used dirs

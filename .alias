@@ -15,4 +15,5 @@ a be='bundle exec'
 
 u g
 a g='google'
+a reload-tmux='tmux source-file ~/.tmux.conf'
 source ~/.local.alias

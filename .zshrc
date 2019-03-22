@@ -194,6 +194,7 @@ export GOPATH="/usr/local/go/"
 # brew install zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # brew install autojump

@@ -57,6 +57,11 @@ if has('nvim')
   " pip3 install neovim - required for deoplete
   Plug 'Shougo/deoplete.nvim'
   let g:deoplete#enable_at_startup = 1
+  Plug 'Shougo/neco-syntax'
+  " vim command autocomplete
+  Plug 'Shougo/neco-vim'
+  Plug 'Shougo/neoyank.vim'
+
   Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
   Plug 'zchee/deoplete-go'
   " FIXME : does not work
@@ -66,12 +71,6 @@ if has('nvim')
   "FIXME disable in favor of echodo once that starts working
   let g:nvim_typescript#signature_complete=1
   let g:nvim_typescript#default_mappings=1
-
-  Plug 'Shougo/neco-syntax'
-  " vim command autocomplete
-  Plug 'Shougo/neco-vim'
-
-  Plug 'Shougo/neoyank.vim'
 
 
   " Plug 'vim-scripts/SyntaxComplete'
@@ -98,18 +97,20 @@ if has('nvim')
 
   " on command line :
   " nvim +PlugInstall +UpdateRemotePlugs +qa
-  " let g:LanguageClient_serverCommands = {
-  "       \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-  "       \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-  "       \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-  "       \ 'python': ['/usr/local/bin/pyls'],
-  "       \ }
+  let g:LanguageClient_serverCommands = {
+        \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+        \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+        \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+        \ 'python': ['/usr/local/bin/pyls'],
+        \ 'typescript': ['~/.node-bin/javascript-typescript-langserver', '--stdio'],
+        \ 'typescript.tsx': ['~/.node-bin/javascript-typescript-langserver', '--stdio'],
+        \ }
 
-  " nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-  " " Or map each action separately
-  " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-  " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+  " Or map each action separately
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 else
   "https://drivy.engineering/setting-up-vim-for-react/
   "linting
