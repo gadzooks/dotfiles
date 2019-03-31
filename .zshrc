@@ -185,12 +185,12 @@ export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # FIXME not working
-bindkey '^;' autosuggest-accept
-bindkey '^;;' autosuggest-execute
+# bindkey '^;' autosuggest-accept
+# bindkey '^;;' autosuggest-execute
 
 # go lang
-export PATH="/usr/local/go/:$PATH"
-export GOPATH="/usr/local/go/" 
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME
 # brew install zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme

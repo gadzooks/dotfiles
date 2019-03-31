@@ -1,19 +1,3 @@
-## todo
-- vim-unimpaired
-- https://github.com/b4b4r07/enhancd
-Plug 'wellle/targets.vim'
-
-Plug 'rhysd/clever-f.vim'
-let g:clever_f_across_no_line = 1
-let g:clever_f_fix_key_direction = 1
-let g:clever_f_timeout_ms = 3000
-
-Plug 'michaeljsmith/vim-indent-object'
-
-Plug 'tommcdo/vim-lion'
-let g:lion_squeeze_spaces = 1
-## todo
-
 - javascript debugger
 - put line : debugger in file
 
@@ -22,9 +6,16 @@ let g:lion_squeeze_spaces = 1
 - f<alphabet> : go to first occurence of alphabet
 - select with visual block and then use * / # to search for entire selection
 
+- <Leader> u : UltiSnipsExpandTrigger
+- <C-l> : UltiSnipsExpandTrigger
+- <C-b> : UltiSnips jump to next trigger
+- <Leader> tt : TestNearest
+- <Leader> tf : TestFile
+- <Leader> ts : TestSuite
+- <Leader> tl : TestLast
 - <Leader> q : toggle last opened buffer
 - <Leader> l : search for word in current buffer
-- <Leader> L : search for workd in all open buffers
+- <Leader> L : search for word in all open buffers
 - <Leader> g : commits for this file
 - <Leader> u : ul for this file
 - <Leader> n : NerdTree
@@ -113,7 +104,8 @@ ctrl-v open buffer in v-split
 
 ## vim snippets
 - TODO
-
+- https://github.com/epilande/vim-es2015-snippets/blob/master/UltiSnips/javascript.snippets
+- https://github.com/epilande/vim-react-snippets
 
 ## zsh
 j - jump to commonly used dirs
@@ -135,3 +127,24 @@ TODO
 ## FIXME
 - after using j/k, ctrl-j/k does not switch tmux panes unless C-a is used
 - tmux dont kill tab without confirmation : ctrl-a x ?
+
+## todo
+- vim-unimpaired
+- https://github.com/b4b4r07/enhancd
+Plug 'wellle/targets.vim'
+
+Plug 'rhysd/clever-f.vim'
+let g:clever_f_across_no_line = 1
+let g:clever_f_fix_key_direction = 1
+let g:clever_f_timeout_ms = 3000
+
+Plug 'michaeljsmith/vim-indent-object'
+
+Plug 'tommcdo/vim-lion'
+let g:lion_squeeze_spaces = 1
+
+The vim-projectionist plugin, primarily, provides infrastructure to navigate around projects. This plugin is effectively the core of the vim-rails plugin extracted into a standalone plugin.
+
+## todo
+
+

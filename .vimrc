@@ -14,12 +14,23 @@ set t_8f=[38;2;%lu;%lu;%lum
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+function! TypeScriptAlternate()
+  echom expand('%').join('/')
+endfunction
+
+nnoremap <Leader><Leader> TypeScriptAlternate()
+
 source $HOME/.vim/myplugins.vim
 source $HOME/.vim/basics.vim
 source $HOME/.vim/editing.vim
 source $HOME/.vim/bindings.vim
 source $HOME/.vim/windows.vim
 source $HOME/.vim/mycommands.vim
+
+colorscheme onedark
+highlight normal guibg=83a58
+" colorscheme ayu
+" colorscheme gruvbox
 
 " :call CmdAlias('find','Tags')
 

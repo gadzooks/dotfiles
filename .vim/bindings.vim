@@ -64,6 +64,8 @@ nmap <Leader>g :BCommits<CR>
 nmap <Leader>G :Commits<CR>
 
 nmap <Leader>u :Snippets<CR>
+" " map ctrl-p to fzf search
+nnoremap <C-p> :Files<Cr>
 
 " search in project
 nmap <Leader>a :Rg<Space>

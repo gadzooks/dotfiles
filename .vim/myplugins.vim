@@ -21,6 +21,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " TODO : see more settings here : https://github.com/lifepillar/vim-mucomplete/blob/master/doc/mucomplete.txt
+" NOTE : help mucomplete-compatibility for tab completion issues
 Plug 'lifepillar/vim-mucomplete'
 set completeopt+=menuone
 set completeopt+=noselect
@@ -47,6 +48,8 @@ if has('nvim')
   Plug 'rakr/vim-one'
   """"""""""""""""" colorschemes """""""""""""""""""""
 
+  " live preview the :substitute command
+  set inccommand=nosplit
   " Another auto complete tool
   " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
   " :CocInstall coc-tsserver
@@ -61,17 +64,40 @@ if has('nvim')
   " vim command autocomplete
   Plug 'Shougo/neco-vim'
   Plug 'Shougo/neoyank.vim'
+  Plug 'deoplete-plugins/deoplete-zsh'
 
-  Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-  Plug 'zchee/deoplete-go'
   " FIXME : does not work
+  " Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+
+  " FIXME : does not work
+  " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  " let g:go_disable_autoinstall = 1
+  " let g:go_fmt_autosave = 1
+  " let g:go_bin_path = expand("$HOME/.gvm/pkgsets/go1.2.1/global/bin/")
+  " Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
   " deoplete source for typescript
-  Plug 'mhartington/nvim-typescript'
-  let g:nvim_typescript#type_info_on_hold=1
+  " disabled since this shows too much information on each line of react and
+  " can be distracting
+  let g:nvim_typescript#type_info_on_hold=0
   "FIXME disable in favor of echodo once that starts working
   let g:nvim_typescript#signature_complete=1
   let g:nvim_typescript#default_mappings=1
+  let g:nvim_typescript#javascript_support=1
+  Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
+  " Plug 'Quramy/vim-js-pretty-template'
+  " " " Register tag name associated the filetype
+  " " call jspretmpl#register_tag('gql', 'graphql')
+
+  " autocmd FileType javascript JsPreTmpl
+  " autocmd FileType javascript.jsx JsPreTmpl
+  " autocmd FileType typescript JsPreTmpl
+  " autocmd FileType typescript.tsx JsPreTmpl
+
+  "fix some lint errors 
+  " TODO does not work
+  " Plug 'Quramy/tsuquyomi'
 
   " Plug 'vim-scripts/SyntaxComplete'
   " if has("autocmd") && exists("+omnifunc")
@@ -81,11 +107,17 @@ if has('nvim')
   "         \	endif
   " endif
   " TODO Plug 'jsfaint/gen_tags.vim'
+  " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
+  " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
+  " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
+  " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
+  " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
 
   Plug 'Shougo/context_filetype.vim' "used by echodoc
+
+  " FIXME not working
   let g:echodoc#enable_at_startup = 1
   Plug 'Shougo/echodoc.vim'
-  let g:nvim_typescript#signature_complet = 0
   set cmdheight=2
 
   Plug 'autozimu/LanguageClient-neovim', {
@@ -98,19 +130,33 @@ if has('nvim')
   " on command line :
   " nvim +PlugInstall +UpdateRemotePlugs +qa
   let g:LanguageClient_serverCommands = {
-        \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
         \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
         \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-        \ 'python': ['/usr/local/bin/pyls'],
-        \ 'typescript': ['~/.node-bin/javascript-typescript-langserver', '--stdio'],
-        \ 'typescript.tsx': ['~/.node-bin/javascript-typescript-langserver', '--stdio'],
+        \ 'typescript': ['typescript-language-server --stdio'],
+        \ 'typescript.tsx': ['typescript-language-server --stdio']
         \ }
+  let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+	let g:LanguageClient_loggingLevel = 'INFO'
+	let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
 
+  if executable('javascript-typescript-stdio')
+    let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+    " Use LanguageServer for omnifunc completion
+    autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+  else
+    echo "javascript-typescript-stdio not installed!\n"
+    :cq
+  endif
   nnoremap <F5> :call LanguageClient_contextMenu()<CR>
   " Or map each action separately
   nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
   nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+  " FIXME for debugging only. Comment out later
+  let g:LanguageClient_loggingLevel = 'INFO'
+  let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
+  let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
 else
   "https://drivy.engineering/setting-up-vim-for-react/
   "linting
@@ -126,7 +172,7 @@ else
         \   'css': ['eslint'],
         \}
   " " Set this. Airline will handle the rest.
-  let g:airline#extensions#ale#enabled = 1
+  " let g:airline#extensions#ale#enabled = 1
   " " Set this in your vimrc file to disabling highlighting
   let g:ale_set_highlights = 0
   let g:ale_sign_column_always = 1
@@ -206,42 +252,45 @@ let g:lightline = {
       \   'filename': 'LightLineFilename',
       \   'gitbranch': 'fugitive#head',
       \ },
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'one',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
+      \   'left': [ [ 'mode', 'paste', 'spell' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ }
 
 function! LightLineFilename()
   return expand('%')
-  let name = ""
-  let subs = split(expand('%'), "/") 
-  let i = 1
-  for s in subs
-    let parent = name
-    if  i == len(subs)
-      let name = parent . '/' . s
-    elseif i == 1
-      let name = s
-    else
-      let name = parent . '/' . strpart(s, 0, 2)
-    endif
-    let i += 1
-  endfor
-  return name
+  " let name = ""
+  " let subs = split(expand('%'), "/") 
+  " let i = 1
+  " for s in subs
+  "   let parent = name
+  "   if  i == len(subs)
+  "     let name = parent . '/' . s
+  "   elseif i == 1
+  "     let name = s
+  "   else
+  "     let name = parent . '/' . strpart(s, 0, 2)
+  "   endif
+  "   let i += 1
+  " endfor
+  " return name
 endfunction
 
-let g:airline_theme='onedark'
+" let g:airline_theme='onedark'
 
 "to change it to 'Hello world!'
 "Now press cs'<q> to change it to <q>Hello world!</q>
 " cs, ds
 Plug 'tpope/vim-surround'
+" ghetto HTML/XML mappings enhances surround
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'adelarsq/vim-matchit'
 "am/im to select between matchit sections
 Plug 'adriaanzon/vim-textobj-matchit'
+Plug 'machakann/vim-highlightedyank'
 
 " text objects
 Plug 'kana/vim-textobj-user'
@@ -252,11 +301,13 @@ Plug 'vim-scripts/argtextobj.vim' " Function arguments as text objects: ia, aa
 " Plug 'mlaursen/vim-react-snippets'
 " https://vimawesome.com/plugin/vim-react-snippets
 " Track the engine.
-" FIXME : seems to interfere with auto complete plugin
-" Plug 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-" Plug 'honza/vim-snippets'
+" FIXME how to use this ??
+"   http://vimcasts.org/episodes/meet-ultisnips/
+"   http://vimcasts.org/episodes/ultisnips-visual-placeholder/
+Plug 'SirVer/ultisnips'
+" NOTE : interferes with auto complete plugin with default settings
+let g:UltiSnipsExpandTrigger = "<C-l>"        " Do not use <tab>
+let g:UltiSnipsJumpForwardTrigger = "<c-b>"  " Do not use <c-j>
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<tab>"
@@ -269,6 +320,11 @@ let g:UltiSnipsEditSplit="vertical"
 " Currently, es6 version of snippets is available in es6 branch only
 Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
 Plug 'honza/vim-snippets' "optional
+" ES2015 code snippets
+Plug 'epilande/vim-es2015-snippets'
+" TODO :
+" Plug 'mattn/emmet-vim'
+" let g:user_emmet_expandabbr_key = '<C-a>,'
 
 "var / vir to select between def / end
 Plug 'rhysd/vim-textobj-ruby'
@@ -282,6 +338,7 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '⎸'
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
 
 Plug 'aserebryakov/vim-todo-lists'
 
@@ -293,8 +350,6 @@ Plug 'tpope/vim-endwise'
 " If you already installed fzf using Homebrew, the following should suffice:
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-" " map ctrl-p to fzf search
-nnoremap <C-p> :Files<Cr>
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
 " previous-history instead of down and up. If you don't like the change,
@@ -309,13 +364,14 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Syntax highlighter plugins
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 " Plug 'kchmck/vim-coffee-script'
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
 
 " format jsx code
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 
+Plug 'jason0x43/vim-js-indent'
 Plug 'bigfish/vim-js-context-coloring'
 let g:js_context_colors_enabled=1
  " NOTE: assumes that you are using some other javascript plugin for syntax highlighting and it attaches itself onto
@@ -369,10 +425,36 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 let g:NERDTreeUpdateOnCursorHold = 0
 let g:NERDTreeUpdateOnWrite      = 0
 
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" let g:go_disable_autoinstall = 1
-" let g:go_fmt_autosave = 1
-" let g:go_bin_path = expand("$HOME/.gvm/pkgsets/go1.2.1/global/bin/")
+Plug 'janko-m/vim-test'
+let test#javascript#jest#executable = 'CI=true yarn test --colors'
+nnoremap <silent> <leader>tt :TestNearest<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>ts :TestSuite<CR>
+nnoremap <silent> <leader>tl :TestLast<CR>
+if has("nvim")
+  let test#strategy = "neovim"
+else
+  let test#strategy = "vimterminal"
+endif
+
+" brew install uptech/oss/alt
+" Run a given vim command on the results of alt from a given path.
+" See usage below.
+function! AltCommand(path, vim_command)
+	let l:alternate = system("alt " . a:path)
+	if empty(l:alternate)
+		echo "No alternate file for " . a:path . " exists!"
+	else
+		exec a:vim_command . " " . l:alternate
+	endif
+endfunction
+
+" Find the alternate file for the current path and open it
+nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>)
+
+" automatically adjusts shiftwidth and expandtab intelligently based on the existing indentation
+Plug 'tpope/vim-sleuth'
+
 
 call plug#end()
 " NOTE: Reload .vimrc and :PlugInstall to install plugins.

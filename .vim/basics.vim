@@ -45,7 +45,7 @@ set mouse=a
 "When more than one match, list all matches and
 "complete first match.
 " set wildmode=list:full
-                            
+
 " set wildmenu
 " set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 " set wildignore+=*vim/backups*
@@ -71,7 +71,7 @@ set showcmd
 set cursorline
 
 set number
-set relativenumber                " relative line numbers! How cool is that?!
+set relativenumber              " relative line numbers! How cool is that?!
 set numberwidth=3               " How many columns to use for the line number
 
 set autowrite                   " Automatically :write before running commands
