@@ -86,16 +86,7 @@ if has('nvim')
   let g:nvim_typescript#javascript_support=1
   Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
-  " Plug 'Quramy/vim-js-pretty-template'
-  " " " Register tag name associated the filetype
-  " " call jspretmpl#register_tag('gql', 'graphql')
-
-  " autocmd FileType javascript JsPreTmpl
-  " autocmd FileType javascript.jsx JsPreTmpl
-  " autocmd FileType typescript JsPreTmpl
-  " autocmd FileType typescript.tsx JsPreTmpl
-
-  "fix some lint errors 
+  "fix some lint errors
   " TODO does not work
   " Plug 'Quramy/tsuquyomi'
 
@@ -108,18 +99,14 @@ if has('nvim')
   " endif
   " TODO Plug 'jsfaint/gen_tags.vim'
   " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
-  " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
-  " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
-  " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
-  " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
 
   Plug 'Shougo/context_filetype.vim' "used by echodoc
-
   " FIXME not working
   let g:echodoc#enable_at_startup = 1
   Plug 'Shougo/echodoc.vim'
   set cmdheight=2
 
+  " NOTE: install at root dir of project : npm i javascript-typescript-langserver
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -130,19 +117,21 @@ if has('nvim')
   " on command line :
   " nvim +PlugInstall +UpdateRemotePlugs +qa
   let g:LanguageClient_serverCommands = {
-        \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+        \ 'javascript': ['javascript-typescript-stdio'],
         \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-        \ 'typescript': ['typescript-language-server --stdio'],
-        \ 'typescript.tsx': ['typescript-language-server --stdio']
+        \ 'typescript': ['javascript-typescript-stdio'],
+        \ 'typescript.tsx': ['javascript-typescript-stdio']
         \ }
-  let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
-	let g:LanguageClient_loggingLevel = 'INFO'
-	let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
+  " NOTE : enable for debugging
+  " let g:LanguageClient_loggingLevel = 'INFO'
+  " let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+  " let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
 
   if executable('javascript-typescript-stdio')
     let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
     " Use LanguageServer for omnifunc completion
     autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+    autocmd FileType typescript setlocal omnifunc=LanguageClient#complete
   else
     echo "javascript-typescript-stdio not installed!\n"
     :cq
@@ -152,11 +141,6 @@ if has('nvim')
   nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
   nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-  " FIXME for debugging only. Comment out later
-  let g:LanguageClient_loggingLevel = 'INFO'
-  let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
-  let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
 else
   "https://drivy.engineering/setting-up-vim-for-react/
   "linting
