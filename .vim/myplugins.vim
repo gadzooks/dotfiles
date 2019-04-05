@@ -44,18 +44,12 @@ if has('nvim')
 
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
-  Plug 'mhartington/oceanic-next'
   Plug 'rakr/vim-one'
+  Plug 'flazz/vim-colorschemes'
   """"""""""""""""" colorschemes """""""""""""""""""""
 
   " live preview the :substitute command
   set inccommand=nosplit
-  " Another auto complete tool
-  " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-  " :CocInstall coc-tsserver
-  " :CocInstall coc-json
-  " :CocInstall coc-html
-
   Plug 'HerringtonDarkholme/yats.vim'  "required for typescript-vim
   " pip3 install neovim - required for deoplete
   Plug 'Shougo/deoplete.nvim'
@@ -71,6 +65,7 @@ if has('nvim')
 
   " FIXME : does not work
   " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
   " let g:go_disable_autoinstall = 1
   " let g:go_fmt_autosave = 1
   " let g:go_bin_path = expand("$HOME/.gvm/pkgsets/go1.2.1/global/bin/")
@@ -84,6 +79,7 @@ if has('nvim')
   let g:nvim_typescript#signature_complete=1
   let g:nvim_typescript#default_mappings=1
   let g:nvim_typescript#javascript_support=1
+  "NOTE : need to run 'npm start' in the root dir
   Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
   "fix some lint errors
@@ -120,12 +116,14 @@ if has('nvim')
         \ 'javascript': ['javascript-typescript-stdio'],
         \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
         \ 'typescript': ['javascript-typescript-stdio'],
-        \ 'typescript.tsx': ['javascript-typescript-stdio']
+        \ 'typescript.tsx': ['javascript-typescript-stdio'],
+        \ 'go': ['go-langserver']
         \ }
   " NOTE : enable for debugging
   " let g:LanguageClient_loggingLevel = 'INFO'
   " let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
   " let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
+  let g:LanguageClient_autoStart = 1
 
   if executable('javascript-typescript-stdio')
     let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
@@ -171,9 +169,9 @@ else
   let g:ale_pattern_options = {
         \ '\.rb$': {'ale_linters': ['rails_best_practices', 'reek', 'rubocop', 'standardrb', 'solargraph'], 'ale_fixers': ['rails_best_practices']},
         \}
-
-
 endif
+
+" Keep, Reject, Restore within quick fix window
 Plug 'romainl/vim-qf'
 
 Plug 'prettier/vim-prettier', {
@@ -196,7 +194,15 @@ Plug 'prettier/vim-prettier', {
     \ 'html',
     \ 'swift' ] }
 
+" > q : next error
+" < q : previous error
 Plug 'tpope/vim-unimpaired'
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
 " NOTE Make sure you use single quotes
 " ruby / rails plugins
 Plug 'tpope/vim-rails'
@@ -232,37 +238,22 @@ Plug 'tpope/vim-commentary'
 
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'component_function': {
-      \   'filename': 'LightLineFilename',
-      \   'gitbranch': 'fugitive#head',
-      \ },
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'spell' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ }
+       \ 'component_function': {
+       \   'filename': 'LightLineFilename',
+       \   'gitbranch': 'fugitive#head',
+       \ },
+       \ 'colorscheme': 'one',
+       \ 'active': {
+       \   'left': [ [ 'mode', 'paste', 'spell' ],
+       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+       \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+       \ },
+       \ }
+
 
 function! LightLineFilename()
   return expand('%')
-  " let name = ""
-  " let subs = split(expand('%'), "/") 
-  " let i = 1
-  " for s in subs
-  "   let parent = name
-  "   if  i == len(subs)
-  "     let name = parent . '/' . s
-  "   elseif i == 1
-  "     let name = s
-  "   else
-  "     let name = parent . '/' . strpart(s, 0, 2)
-  "   endif
-  "   let i += 1
-  " endfor
-  " return name
 endfunction
-
-" let g:airline_theme='onedark'
 
 "to change it to 'Hello world!'
 "Now press cs'<q> to change it to <q>Hello world!</q>
@@ -273,14 +264,21 @@ Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'adelarsq/vim-matchit'
 "am/im to select between matchit sections
-Plug 'adriaanzon/vim-textobj-matchit'
 Plug 'machakann/vim-highlightedyank'
 
 " text objects
+"var / vir to select between def / end
+Plug 'rhysd/vim-textobj-ruby'
+Plug 'adriaanzon/vim-textobj-matchit'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
 Plug 'haya14busa/vim-textobj-function-syntax'
 Plug 'vim-scripts/argtextobj.vim' " Function arguments as text objects: ia, aa
+" <count>ai	An Indentation level and line above.
+" <count>ii	Inner Indentation level (no line above).
+" <count>aI	An Indentation level and lines above/below.
+" <count>iI	Inner Indentation level (no lines above/below).
+Plug 'michaeljsmith/vim-indent-object'
 " TODO try these snippets out
 " Plug 'mlaursen/vim-react-snippets'
 " https://vimawesome.com/plugin/vim-react-snippets
@@ -290,14 +288,9 @@ Plug 'vim-scripts/argtextobj.vim' " Function arguments as text objects: ia, aa
 "   http://vimcasts.org/episodes/ultisnips-visual-placeholder/
 Plug 'SirVer/ultisnips'
 " NOTE : interferes with auto complete plugin with default settings
-let g:UltiSnipsExpandTrigger = "<C-l>"        " Do not use <tab>
+let g:UltiSnipsExpandTrigger = "<c-l>"        " Do not use <tab>
 let g:UltiSnipsJumpForwardTrigger = "<c-b>"  " Do not use <c-j>
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -310,8 +303,6 @@ Plug 'epilande/vim-es2015-snippets'
 " Plug 'mattn/emmet-vim'
 " let g:user_emmet_expandabbr_key = '<C-a>,'
 
-"var / vir to select between def / end
-Plug 'rhysd/vim-textobj-ruby'
 
 "use ripgrep inside vim
 ":Rg <string|pattern>
@@ -349,20 +340,23 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Syntax highlighter plugins
 " Plug 'sheerun/vim-polyglot'
-" Plug 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 " Plug 'pangloss/vim-javascript'
+" Plug 'jelera/vim-javascript-syntax'
 
 " format jsx code
 " Plug 'mxw/vim-jsx'
 
+Plug 'pangloss/vim-javascript'
 Plug 'jason0x43/vim-js-indent'
-Plug 'bigfish/vim-js-context-coloring'
-let g:js_context_colors_enabled=1
+" Plug 'bigfish/vim-js-context-coloring'
+" let g:js_context_colors_enabled=1
  " NOTE: assumes that you are using some other javascript plugin for syntax highlighting and it attaches itself onto
  " the JavaScriptAll cluster. So put this after vim-js-context-coloring
 Plug 'glanotte/vim-jasmine'
 
-Plug 'MaxMEllon/vim-jsx-pretty'
+" NOTE this causes issue with nvim-typescript
+" Plug 'MaxMEllon/vim-jsx-pretty'
 " default 0
 let g:vim_jsx_pretty_colorful_config = 1
 Plug 'leafgarland/typescript-vim'
@@ -425,12 +419,12 @@ endif
 " Run a given vim command on the results of alt from a given path.
 " See usage below.
 function! AltCommand(path, vim_command)
-	let l:alternate = system("alt " . a:path)
-	if empty(l:alternate)
-		echo "No alternate file for " . a:path . " exists!"
-	else
-		exec a:vim_command . " " . l:alternate
-	endif
+  let l:alternate = system("alt " . a:path)
+  if empty(l:alternate)
+    echo "No alternate file for " . a:path . " exists!"
+  else
+    exec a:vim_command . " " . l:alternate
+  endif
 endfunction
 
 " Find the alternate file for the current path and open it

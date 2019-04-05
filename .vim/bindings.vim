@@ -74,4 +74,5 @@ nmap <silent>;; :q<CR>
 nmap <Leader>q :b#<cr>
 
 " destroy current buffer and show previous one
-nmap bd :b#\|bd #<CR>
+" slows down using b to go back one word
+" nmap bd :b#\|bd #<CR>

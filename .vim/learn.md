@@ -2,13 +2,26 @@
 - put line : debugger in file
 
 # New stuff
+- <Leader> u : UltiSnipsExpandTrigger
+- <Leader><Leader> f : forward search by 1 char
+- <Leader><Leader> F : backward search by 1 char
+- <Leader><Leader> b : back to particular word
+- <Leader><Leader> w : forward to word start
+- <C-l> : UltiSnipsExpandTrigger
+- <C-b> : UltiSnips jump to next trigger
+- Keep, Reject, Restore within quick fix window
+- [US] during insert starts from UltiSnips, use <c-l> to expand that
+- > q : next error
+- < q : previous error
+- f : search forward for char
+
 - ga : search current word in current dir
 - f<alphabet> : go to first occurence of alphabet
 - select with visual block and then use * / # to search for entire selection
+- ci" : change inside "
+- ca( : change around (
+- ii  : select at indentation
 
-- <Leader> u : UltiSnipsExpandTrigger
-- <C-l> : UltiSnipsExpandTrigger
-- <C-b> : UltiSnips jump to next trigger
 - <Leader> tt : TestNearest
 - <Leader> tf : TestFile
 - <Leader> ts : TestSuite

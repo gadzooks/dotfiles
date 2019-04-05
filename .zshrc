@@ -79,7 +79,7 @@ jira
 vi-mode
 web-search # google what is github
 zsh-syntax-highlighting
-zsh-autosuggestions
+# zsh-autosuggestions
 )
 
 #https://github.com/zplug/zplug
