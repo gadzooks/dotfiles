@@ -190,7 +190,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # go lang
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME
+export GOPATH=$HOME/go
 # brew install zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
@@ -200,3 +200,13 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/h
 # brew install autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/akarwande/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/akarwande/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/akarwande/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/akarwande/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/akarwande/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/akarwande/node_modules/tabtab/.completions/slss.zsh

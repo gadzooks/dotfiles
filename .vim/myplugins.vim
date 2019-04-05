@@ -76,9 +76,9 @@ if has('nvim')
   " can be distracting
   let g:nvim_typescript#type_info_on_hold=0
   "FIXME disable in favor of echodo once that starts working
-  let g:nvim_typescript#signature_complete=1
+  let g:nvim_typescript#signature_complete=0
   let g:nvim_typescript#default_mappings=1
-  let g:nvim_typescript#javascript_support=1
+  let g:nvim_typescript#javascript_support=0
   "NOTE : need to run 'npm start' in the root dir
   Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
@@ -113,7 +113,7 @@ if has('nvim')
   " on command line :
   " nvim +PlugInstall +UpdateRemotePlugs +qa
   let g:LanguageClient_serverCommands = {
-        \ 'javascript': ['javascript-typescript-stdio'],
+        \ 'javascript': ['tcp://127.0.0.1:2089'],
         \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
         \ 'typescript': ['javascript-typescript-stdio'],
         \ 'typescript.tsx': ['javascript-typescript-stdio'],
