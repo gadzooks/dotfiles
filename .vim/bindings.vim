@@ -28,10 +28,8 @@ vnoremap <C-V>     v
 "fzf related bindings
 " search filenames for files tracked by git
 nmap <Leader>F :GFiles<CR>
-" search all filenames
+" fuzzy find files in the working directory (where you launched Vim from)
 nmap <Leader>f :Files<CR>
-" search all filenames in buffers
-nmap <Leader>b :Buffers<CR>
 " search history
 nmap <Leader>h :History<CR>
 " search tags
@@ -39,7 +37,7 @@ nmap <Leader>T :BTags<CR>
 nmap <Leader>t :Tags<CR>
 
 " search in current buffer
-nmap <Leader>l :BLines<CR>
+nmap <Leader>/ :BLines<CR>
 " search in loaded buffers
 nmap <Leader>L :Lines<CR>
 " search marks ?
@@ -64,8 +62,6 @@ nmap <Leader>g :BCommits<CR>
 nmap <Leader>G :Commits<CR>
 
 nmap <Leader>u :Snippets<CR>
-" " map ctrl-p to fzf search
-nnoremap <C-p> :Files<Cr>
 
 " search in project
 nmap <Leader>a :Rg<Space>

@@ -20,6 +20,7 @@
 - select with visual block and then use * / # to search for entire selection
 - ci" : change inside "
 - ca( : change around (
+- ct" : change till "
 - ii  : select at indentation
 
 - <Leader> tt : TestNearest
@@ -69,24 +70,21 @@ K              :TSDoc
 ctrl-X open buffer in split
 ctrl-v open buffer in v-split 
 - <Leader> <SPACE> : clear search highlight
-- <Leader> f : search all git tracked files
+- <Leader> f : search files in all dirs from which vim was launched
 - <Leader> F : search all tracked files
 - <Leader> b : search all buffers
 - <Leader> h : search all history
 - <Leader> T : search all tags in current class
 - <Leader> t : search all tags in whole code base
 
-- <Leader> l : search current buffer
-- <Leader> L : search all buffer
+- <Leader> F : search all buffer
 
 - <Leader> s : search in file names and files, follow gitignore
 - <Leader> S : search inside all files, filenames etc
 - <Leader> a : RipGrep
 
 - <Leader> H : search vim help
-
 - <Leader> ; : search command history
-- <Leader> / : search through /search history
 
 ## git
 - <leader> gs : Gstatus

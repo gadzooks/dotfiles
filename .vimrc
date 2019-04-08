@@ -5,6 +5,7 @@ set nocompatible
 " common code that is needed before anything else loads up goes here
 let mapleader = ","
 " set statusline= ""
+filetype off " required for enabling true color support (I think)
 filetype plugin indent on
 filetype plugin on
 syntax on

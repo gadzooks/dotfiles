@@ -242,7 +242,6 @@ let g:lightline = {
        \   'filename': 'LightLineFilename',
        \   'gitbranch': 'fugitive#head',
        \ },
-       \ 'colorscheme': 'one',
        \ 'active': {
        \   'left': [ [ 'mode', 'paste', 'spell' ],
        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -432,7 +431,8 @@ nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>)
 
 " automatically adjusts shiftwidth and expandtab intelligently based on the existing indentation
 Plug 'tpope/vim-sleuth'
-
+" FIXME not working
+" Plug 'szw/vim-g'
 
 call plug#end()
 " NOTE: Reload .vimrc and :PlugInstall to install plugins.
