@@ -35,6 +35,7 @@ nmap <Leader>h :History<CR>
 " search tags
 nmap <Leader>T :BTags<CR>
 nmap <Leader>t :Tags<CR>
+nmap <Leader>b :Buffers<CR>
 
 " search in current buffer
 nmap <Leader>/ :BLines<CR>
@@ -52,7 +53,7 @@ nmap <Leader>H :Helptags!<CR>
 " search command history
 " nmap <Leader>: :History:<CR>
 nmap <Leader>; :History:<CR>
-nmap <Leader>/ :History/<CR>
+" nmap <Leader>/ :History/<CR>
 
 " Fuzzy search key mappings, which is great for checking against current mappings before defining a new one:
 nmap <Leader>M :Maps<CR>

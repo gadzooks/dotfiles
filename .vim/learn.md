@@ -2,6 +2,12 @@
 - put line : debugger in file
 
 # New stuff
+- <Leader> rn : coc-rename
+- <Leader> gd : coc-definition - find all uses for type
+- <Leader> gy : coc-type-definition
+- <Leader> gr : coc-references - find all uses for type
+- <Leader> gi : coc-implementation
+- <Leader> qf : fix autofix problem for current line
 - <Leader> u : UltiSnipsExpandTrigger
 - <Leader><Leader> f : forward search by 1 char
 - <Leader><Leader> F : backward search by 1 char

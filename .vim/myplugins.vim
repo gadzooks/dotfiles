@@ -22,16 +22,16 @@ call plug#begin('~/.vim/plugged')
 
 " TODO : see more settings here : https://github.com/lifepillar/vim-mucomplete/blob/master/doc/mucomplete.txt
 " NOTE : help mucomplete-compatibility for tab completion issues
-Plug 'lifepillar/vim-mucomplete'
-set completeopt+=menuone
-set completeopt+=noselect
-"set completeopt+=noinsert
-set shortmess+=c   " Shut off completion messages
-set belloff+=ctrlg " If Vim beeps during completion
-let g:mucomplete#enable_auto_at_startup = 1
-" delay in miliiseconds before autocomplete starts
-let g:mucomplete#completion_delay = 200
-highlight Pmenu ctermbg=blue guibg=gray
+"Plug 'lifepillar/vim-mucomplete'
+"set completeopt+=menuone
+"set completeopt+=noselect
+""set completeopt+=noinsert
+"set shortmess+=c   " Shut off completion messages
+"set belloff+=ctrlg " If Vim beeps during completion
+"let g:mucomplete#enable_auto_at_startup = 1
+"" delay in miliiseconds before autocomplete starts
+"let g:mucomplete#completion_delay = 200
+"highlight Pmenu ctermbg=blue guibg=gray
 
 if has('nvim')
   """"""""""""""""" colorschemes """""""""""""""""""""
@@ -48,39 +48,40 @@ if has('nvim')
   Plug 'flazz/vim-colorschemes'
   """"""""""""""""" colorschemes """""""""""""""""""""
 
+  Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
   " live preview the :substitute command
-  set inccommand=nosplit
-  Plug 'HerringtonDarkholme/yats.vim'  "required for typescript-vim
-  " pip3 install neovim - required for deoplete
-  Plug 'Shougo/deoplete.nvim'
-  let g:deoplete#enable_at_startup = 1
-  Plug 'Shougo/neco-syntax'
-  " vim command autocomplete
-  Plug 'Shougo/neco-vim'
-  Plug 'Shougo/neoyank.vim'
-  Plug 'deoplete-plugins/deoplete-zsh'
+  "set inccommand=nosplit
+  "Plug 'HerringtonDarkholme/yats.vim'  "required for typescript-vim
+  "" pip3 install neovim - required for deoplete
+  "Plug 'Shougo/deoplete.nvim'
+  "let g:deoplete#enable_at_startup = 1
+  "Plug 'Shougo/neco-syntax'
+  "" vim command autocomplete
+  "Plug 'Shougo/neco-vim'
+  "Plug 'Shougo/neoyank.vim'
+  "Plug 'deoplete-plugins/deoplete-zsh'
 
-  " FIXME : does not work
-  " Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+  "" FIXME : does not work
+  "" Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
-  " FIXME : does not work
-  " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  "" FIXME : does not work
+  "" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-  " let g:go_disable_autoinstall = 1
-  " let g:go_fmt_autosave = 1
-  " let g:go_bin_path = expand("$HOME/.gvm/pkgsets/go1.2.1/global/bin/")
-  " Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+  "" let g:go_disable_autoinstall = 1
+  "" let g:go_fmt_autosave = 1
+  "" let g:go_bin_path = expand("$HOME/.gvm/pkgsets/go1.2.1/global/bin/")
+  "" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
-  " deoplete source for typescript
-  " disabled since this shows too much information on each line of react and
-  " can be distracting
-  let g:nvim_typescript#type_info_on_hold=0
-  "FIXME disable in favor of echodo once that starts working
-  let g:nvim_typescript#signature_complete=0
-  let g:nvim_typescript#default_mappings=1
-  let g:nvim_typescript#javascript_support=0
-  "NOTE : need to run 'npm start' in the root dir
-  Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+  "" deoplete source for typescript
+  "" disabled since this shows too much information on each line of react and
+  "" can be distracting
+  "let g:nvim_typescript#type_info_on_hold=0
+  ""FIXME disable in favor of echodo once that starts working
+  "let g:nvim_typescript#signature_complete=0
+  "let g:nvim_typescript#default_mappings=1
+  "let g:nvim_typescript#javascript_support=0
+  ""NOTE : need to run 'npm start' in the root dir
+  "Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
   "fix some lint errors
   " TODO does not work
@@ -96,49 +97,49 @@ if has('nvim')
   " TODO Plug 'jsfaint/gen_tags.vim'
   " TODO : https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
 
-  Plug 'Shougo/context_filetype.vim' "used by echodoc
-  " FIXME not working
-  let g:echodoc#enable_at_startup = 1
-  Plug 'Shougo/echodoc.vim'
-  set cmdheight=2
+  " Plug 'Shougo/context_filetype.vim' "used by echodoc
+  " " FIXME not working
+  " let g:echodoc#enable_at_startup = 1
+  " Plug 'Shougo/echodoc.vim'
+  " set cmdheight=2
 
   " NOTE: install at root dir of project : npm i javascript-typescript-langserver
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-  " Required for operations modifying multiple buffers like rename.
-  set hidden
+  " Plug 'autozimu/LanguageClient-neovim', {
+  "   \ 'branch': 'next',
+  "   \ 'do': 'bash install.sh',
+  "   \ }
+  " " Required for operations modifying multiple buffers like rename.
+  " set hidden
 
   " on command line :
   " nvim +PlugInstall +UpdateRemotePlugs +qa
-  let g:LanguageClient_serverCommands = {
-        \ 'javascript': ['tcp://127.0.0.1:2089'],
-        \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-        \ 'typescript': ['javascript-typescript-stdio'],
-        \ 'typescript.tsx': ['javascript-typescript-stdio'],
-        \ 'go': ['go-langserver']
-        \ }
-  " NOTE : enable for debugging
-  " let g:LanguageClient_loggingLevel = 'INFO'
-  " let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
-  " let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
-  let g:LanguageClient_autoStart = 1
+  " let g:LanguageClient_serverCommands = {
+  "       \ 'javascript': ['tcp://127.0.0.1:2089'],
+  "       \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+  "       \ 'typescript': ['javascript-typescript-stdio'],
+  "       \ 'typescript.tsx': ['javascript-typescript-stdio'],
+  "       \ 'go': ['go-langserver']
+  "       \ }
+  " " NOTE : enable for debugging
+  " " let g:LanguageClient_loggingLevel = 'INFO'
+  " " let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+  " " let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
+  " let g:LanguageClient_autoStart = 1
 
-  if executable('javascript-typescript-stdio')
-    let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-    " Use LanguageServer for omnifunc completion
-    autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-    autocmd FileType typescript setlocal omnifunc=LanguageClient#complete
-  else
-    echo "javascript-typescript-stdio not installed!\n"
-    :cq
-  endif
-  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-  " Or map each action separately
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+  " if executable('javascript-typescript-stdio')
+  "   let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  "   " Use LanguageServer for omnifunc completion
+  "   autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+  "   autocmd FileType typescript setlocal omnifunc=LanguageClient#complete
+  " else
+  "   echo "javascript-typescript-stdio not installed!\n"
+  "   :cq
+  " endif
+  " nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+  " " Or map each action separately
+  " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 else
   "https://drivy.engineering/setting-up-vim-for-react/
   "linting
@@ -241,6 +242,7 @@ let g:lightline = {
        \ 'component_function': {
        \   'filename': 'LightLineFilename',
        \   'gitbranch': 'fugitive#head',
+       \   'cocstatus': 'coc#status',
        \ },
        \ 'active': {
        \   'left': [ [ 'mode', 'paste', 'spell' ],
@@ -316,8 +318,20 @@ Plug 'easymotion/vim-easymotion'
 
 Plug 'aserebryakov/vim-todo-lists'
 
-"ruby
-Plug 'tpope/vim-endwise'
+"ruby add end. FIXME interferes with coc.
+"https://github.com/tpope/vim-endwise/issues/22
+" Plug 'tpope/vim-endwise'
+" fun! My_CR_map()
+"   " "<CR>" via delimitMateCR
+"   let r = "\<Plug>delimitMateCR"
+"   if maparg('<Plug>CursorCrossCR', 'i')
+"     " requires vim 704
+"     let r .= "\<Plug>CursorCrossCR"
+"   endif
+"   let r .= "\<Plug>DiscretionaryEnd"
+"   return r
+" endfun
+" imap <expr> <CR> My_CR_map()
 
 "fzf fuzzy searching
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
