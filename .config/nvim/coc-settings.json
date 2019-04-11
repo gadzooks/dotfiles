@@ -1,0 +1,9 @@
+{
+	"diagnostic.errorSign": "×",
+	"diagnostic.warningSign": "⚠",
+	"diagnostic.infoSign": "ℹ",
+	"diagnostic.hintSign": "•",
+	"diagnostic.checkCurrentLine": true,
+	"diagnostic.enable": true,
+	"suggest.triggerAfterInsertEnter": true
+}

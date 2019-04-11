@@ -1,7 +1,9 @@
 - javascript debugger
 - put line : debugger in file
 
-# New stuff
+# `New stuff`
+- ma : nerdtree create file / dir
+- md : nerdtree delete file / dir
 - <Leader> rn : coc-rename
 - <Leader> gd : coc-definition - find all uses for type
 - <Leader> gy : coc-type-definition
@@ -17,6 +19,8 @@
 - <C-b> : UltiSnips jump to next trigger
 - Keep, Reject, Restore within quick fix window
 - [US] during insert starts from UltiSnips, use <c-l> to expand that
+- > c : next error
+- < c : previous error
 - > q : next error
 - < q : previous error
 - f : search forward for char
@@ -53,9 +57,13 @@
 Mapping        Action
 -------------  --------------
 K              :TSDoc
-<leader>tdp    :TSDefPreview
-<c-]>          :TSTypeDef
-
+- <Leader> rn : coc-rename
+- <Leader> gd : coc-definition - find all uses for type
+- <Leader> gy : coc-type-definition
+- <Leader> gr : coc-references - find all uses for type
+- <Leader> gi : coc-implementation
+- <Leader> qf : fix autofix problem for current line
+-
 ## vim basics
 - * will search word under cursor
 - g, : last edited place in file
@@ -100,7 +108,6 @@ ctrl-v open buffer in v-split
 - Gblame : git blame
 - Gmove : does git move and updates buffer
 - Gbrowse : browse file in browser
--
 
 ## fugitive related
 

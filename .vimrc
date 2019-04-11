@@ -21,13 +21,13 @@ endfunction
 
 nnoremap <Leader><Leader> TypeScriptAlternate()
 
+" source $HOME/.vim/windows.vim
 source $HOME/.vim/myplugins.vim
-source $HOME/.vim/coc.vim
-source $HOME/.vim/basics.vim
 source $HOME/.vim/editing.vim
 source $HOME/.vim/bindings.vim
-source $HOME/.vim/windows.vim
 source $HOME/.vim/mycommands.vim
+source $HOME/.vim/coc.vim
+source $HOME/.vim/basics.vim
 
 " colorscheme onedark
 colorscheme one

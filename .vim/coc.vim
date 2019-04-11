@@ -95,20 +95,6 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 
-" NOTE : already handled in myplugins.vim
-" " Add diagnostic info for https://github.com/itchyny/lightline.vim
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ 'active': {
-"       \   'left': [ [ 'mode', 'paste' ],
-"       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-"       \ },
-"       \ 'component_function': {
-"       \   'cocstatus': 'coc#status'
-"       \ },
-"       \ }
-
-
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -127,6 +113,20 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-CocInstall coc-html
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
 " FIXME not working
 " CocInstall coc-gocode
