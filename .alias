@@ -18,4 +18,5 @@ a g='google'
 a reload-tmux='tmux source-file ~/.tmux.conf'
 a vi='~/nvim-osx64/bin/nvim'
 a vim='~/nvim-osx64/bin/nvim'
+a bi='bundle install'
 source ~/.local.alias

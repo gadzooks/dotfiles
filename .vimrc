@@ -30,10 +30,11 @@ source $HOME/.vim/coc.vim
 source $HOME/.vim/basics.vim
 
 " colorscheme onedark
-colorscheme one
-highlight normal guibg=83a58
-" colorscheme ayu
 " colorscheme gruvbox
+" colorscheme PaperColor
+colorscheme one
+" highlight normal guibg=83a58
+" colorscheme ayu
 
 " :call CmdAlias('find','Tags')
 

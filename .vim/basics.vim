@@ -107,7 +107,11 @@ set incsearch                   " Do incremental searching
 set ignorecase
 set smartcase
 " clear search highlight
-nnoremap <leader><space> :noh<cr>
+nnoremap <silent><leader><space> :noh<cr>
+
+" highlight search when using %s
+set inccommand=nosplit
+
 
 " turn off highlighting when esc is pressed
 " FIXME : this starts vim in REPLACE mode.

@@ -32,6 +32,8 @@ Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'rakr/vim-one'
 Plug 'flazz/vim-colorschemes'
+Plug 'jaredgorski/SpaceCamp'
+
 """"""""""""""""" colorschemes """""""""""""""""""""
 
 " Need this before coc#util#install
@@ -50,6 +52,11 @@ let g:coc_global_extensions = [
 \ ]
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-snippets'
+
+Plug 'https://gitlab.com/Lenovsky/nuake.git'
+nnoremap <F4> :Nuake<CR>
+inoremap <F4> <C-\><C-n>:Nuake<CR>
+tnoremap <F4> <C-\><C-n>:Nuake<CR>
 
 "https://drivy.engineering/setting-up-vim-for-react/
 "linting
@@ -122,6 +129,9 @@ nnoremap <leader>gs :Gstatus<CR>
 " nnoremap <leader>gw :Gwrite<CR>
 "FIXME  set statusline+= %{FugitiveStatusline()}
 
+" Basic command works but the pop up related commands dont.
+" Plug 'rhysd/git-messenger.vim'
+
 "Enables :Gbrowse from fugitive.vim to open GitHub URLs.
 Plug 'tpope/vim-rhubarb'
 let g:github_enterprise_urls = ['https://github.com/NavigatingCancer/navigatingcare-components', 'https://github.com/NavigatingCancer/gc']
@@ -129,6 +139,8 @@ Plug 'airblade/vim-gitgutter'
 
 " comment code : use gc
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+" TODO https://github.com/editorconfig/editorconfig-vim
 
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -186,13 +198,13 @@ Plug 'michaeljsmith/vim-indent-object'
 " Track the engine.
 
 " recommended by coc.
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 
-" Currently, es6 version of snippets is available in es6 branch only
-Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
-Plug 'honza/vim-snippets' "optional
-" ES2015 code snippets
-Plug 'epilande/vim-es2015-snippets'
+" " Currently, es6 version of snippets is available in es6 branch only
+" Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
+" Plug 'honza/vim-snippets' "optional
+" " ES2015 code snippets
+" Plug 'epilande/vim-es2015-snippets'
 " TODO :
 " Plug 'mattn/emmet-vim'
 " let g:user_emmet_expandabbr_key = '<C-a>,'
@@ -269,6 +281,7 @@ let g:workspace_session_disable_on_args = 1
 let g:workspace_autocreate = 1
 " provides automatic closing of quotes, parenthesis, brackets, etc.,
 Plug 'raimondi/delimitmate'
+let delimitMate_expand_cr = 1
 
 " Usage:
 "     :call CmdAlias('<lhs>', '<rhs>', [flags])

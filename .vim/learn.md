@@ -2,6 +2,8 @@
 - put line : debugger in file
 
 # `New stuff`
+- <Leader> gm : GitMessenger plugin
+  -
 - ma : nerdtree create file / dir
 - md : nerdtree delete file / dir
 - <Leader> rn : coc-rename
@@ -24,6 +26,8 @@
 - > q : next error
 - < q : previous error
 - f : search forward for char
+
+- Delete, Move, Rename, Chmod, Mkdir, Cfind, Clocate
 
 - ga : search current word in current dir
 - f<alphabet> : go to first occurence of alphabet

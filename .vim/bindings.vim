@@ -13,7 +13,7 @@ nnoremap <C-V>     v
 vnoremap    v   <C-V>
 vnoremap <C-V>     v
 
-
+imap jj <Esc>
 " Reselect visual block after indent/outdent
 " vnoremap < <gv
 " vnoremap > >gv
