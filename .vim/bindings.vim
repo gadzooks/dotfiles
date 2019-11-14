@@ -42,6 +42,7 @@ nmap <Leader>/ :BLines<CR>
 nmap <Leader>L :Lines<CR>
 " search marks ?
 nmap <Leader>' :Marks<CR>
+nmap <Leader>b :Buffers<CR>
 
 "Fuzzy search defined commands, whether they be user defined, plugin defined, or native commands:
 nmap <Leader>C :Commands<CR>
@@ -68,6 +69,17 @@ nmap <Leader>a :Rg<Space>
 nmap ga :Rg <cword><CR>
 nmap <silent>;; :q<CR>
 nmap <Leader>q :b#<cr>
+
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" In Neovim, you can set up fzf window using a Vim command
+" let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '10new' }
+
 
 " destroy current buffer and show previous one
 " slows down using b to go back one word

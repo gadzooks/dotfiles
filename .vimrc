@@ -28,9 +28,11 @@ source $HOME/.vim/bindings.vim
 source $HOME/.vim/windows.vim
 source $HOME/.vim/mycommands.vim
 
+"set ideajoin
+
 " colorscheme onedark
-colorscheme one
-highlight normal guibg=83a58
+" colorscheme one
+" highlight normal guibg=83a58
 " colorscheme ayu
 " colorscheme gruvbox
 

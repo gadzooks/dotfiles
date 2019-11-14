@@ -80,7 +80,7 @@ if has('nvim')
   let g:nvim_typescript#default_mappings=1
   let g:nvim_typescript#javascript_support=0
   "NOTE : need to run 'npm start' in the root dir
-  Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+  " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
   "fix some lint errors
   " TODO does not work

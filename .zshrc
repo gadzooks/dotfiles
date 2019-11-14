@@ -130,6 +130,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 [ -f ~/.alias ] && source ~/.alias
 
 # export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home
+export PATH=$PATH:~/apache-maven-3.6.1/bin/
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -183,6 +185,10 @@ export LDFLAGS=-L/usr/local/opt/openssl/lib
 export CPPFLAGS=-I/usr/local/opt/openssl/include
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
+# export KUBECONFIG=$KUBECONFIG:~/.kube/config-appsdev-k8s-cluster
+unset KUBECONFIG
+source <(kubectl completion zsh)
+
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # FIXME not working
@@ -190,8 +196,9 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # bindkey '^;;' autosuggest-execute
 
 # go lang
-export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+# export PATH=$PATH:/usr/local/go/bin
 # brew install zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
@@ -211,3 +218,8 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/h
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /Users/akarwande/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/akarwande/node_modules/tabtab/.completions/slss.zsh
+export PATH="/usr/local/opt/mongodb-community@4.0/bin:$PATH"
+
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+
