@@ -101,6 +101,7 @@ if type brew &>/dev/null; then
 fi
 
 export PATH="$PATH:/usr/local/Cellar/ctags/5.8_1/bin"
+export PATH="$PATH:/usr/local/Cellar/"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -186,11 +187,11 @@ export CPPFLAGS=-I/usr/local/opt/openssl/include
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
 # export KUBECONFIG=$KUBECONFIG:~/.kube/config-appsdev-k8s-cluster
-unset KUBECONFIG
-source <(kubectl completion zsh)
+#unset KUBECONFIG
+#source <(kubectl completion zsh)
 
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # FIXME not working
 # bindkey '^;' autosuggest-accept
 # bindkey '^;;' autosuggest-execute
@@ -222,4 +223,10 @@ export PATH="/usr/local/opt/mongodb-community@4.0/bin:$PATH"
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+
+# golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/src
+export PATH="$GOPATH/bin:$PATH"
 
