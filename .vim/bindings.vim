@@ -7,11 +7,11 @@
 " nnoremap ii <Esc>
 
  " Swap v and CTRL-V, because Block mode is more useful that Visual mode
-nnoremap    v   <C-V>
-nnoremap <C-V>     v
+"nnoremap    v   <C-V>
+"nnoremap <C-V>     v
 
-vnoremap    v   <C-V>
-vnoremap <C-V>     v
+"vnoremap    v   <C-V>
+"vnoremap <C-V>     v
 
 
 " Reselect visual block after indent/outdent
