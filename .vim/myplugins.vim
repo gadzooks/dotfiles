@@ -285,13 +285,13 @@ Plug 'michaeljsmith/vim-indent-object'
 " FIXME how to use this ??
 "   http://vimcasts.org/episodes/meet-ultisnips/
 "   http://vimcasts.org/episodes/ultisnips-visual-placeholder/
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " NOTE : interferes with auto complete plugin with default settings
-let g:UltiSnipsExpandTrigger = "<c-l>"        " Do not use <tab>
-let g:UltiSnipsJumpForwardTrigger = "<c-b>"  " Do not use <c-j>
+" let g:UltiSnipsExpandTrigger = "<c-l>"        " Do not use <tab>
+" let g:UltiSnipsJumpForwardTrigger = "<c-b>"  " Do not use <c-j>
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsEditSplit="vertical"
 
 " Currently, es6 version of snippets is available in es6 branch only
 Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
@@ -322,6 +322,7 @@ Plug 'tpope/vim-endwise'
 "fzf fuzzy searching
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 " If you already installed fzf using Homebrew, the following should suffice:
+set rtp+=/usr/local/opt/fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 " Enable per-command history.
@@ -433,6 +434,8 @@ nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>)
 Plug 'tpope/vim-sleuth'
 " FIXME not working
 " Plug 'szw/vim-g'
+
+Plug 'JamshedVesuna/vim-markdown-preview'
 
 call plug#end()
 " NOTE: Reload .vimrc and :PlugInstall to install plugins.

@@ -1,7 +1,7 @@
 # as per this link, dont set it : https://jdhao.github.io/2018/10/19/tmux_nvim_true_color/
 # export TERM="xterm-256color"
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/$USER/.oh-my-zsh"
@@ -46,7 +46,7 @@ ZSH_THEME="crunch"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -80,7 +80,7 @@ jira
 vi-mode
 web-search # google what is github
 zsh-syntax-highlighting
-# zsh-autosuggestions
+zsh-autosuggestions
 )
 
 #https://github.com/zplug/zplug
@@ -132,10 +132,12 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # export JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home
-export PATH=$PATH:~/apache-maven-3.6.1/bin/
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.8.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-14.0.2.jdk/Contents/Home
+export PATH=$PATH:~/apache-maven-3.6.3/bin/
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # python pip
@@ -161,7 +163,7 @@ bindkey -v
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 # export PATH="/usr/local/opt/ruby/bin:$PATH"
 
-[ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
+# [ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861
 # make fzf use ripgrep
@@ -173,7 +175,9 @@ export GROOVY_HOME=/usr/local/opt/groovy/libexec
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
 
 # karwande added
 # Enable Ctrl-x-e to edit command line
@@ -188,7 +192,7 @@ export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
 # export KUBECONFIG=$KUBECONFIG:~/.kube/config-appsdev-k8s-cluster
 #unset KUBECONFIG
-#source <(kubectl completion zsh)
+source <(kubectl completion zsh)
 
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
 #source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -196,10 +200,6 @@ export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 # bindkey '^;' autosuggest-accept
 # bindkey '^;;' autosuggest-execute
 
-# go lang
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-# export PATH=$PATH:/usr/local/go/bin
 # brew install zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 # source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
@@ -227,6 +227,15 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # golang
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin
-export GOPATH=$HOME/src
+export GOPATH=$HOME
 export PATH="$GOPATH/bin:$PATH"
+# export PATH=$PATH:/usr/local/go/bin
 
+export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/Users/gadzooks/kafka_2.13-2.6.0/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/gadzooks/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/gadzooks/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/gadzooks/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/gadzooks/google-cloud-sdk/completion.zsh.inc'; fi

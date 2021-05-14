@@ -12,11 +12,20 @@ a yadmlog="yadm log --graph --all"
 a gs='git status'
 a gd='git diff'
 a gc='git checkout'
-a rg='ripgrep'
-#a grep='rg'
 a be='bundle exec'
 
 u g
 a g='google'
 a reload-tmux='tmux source-file ~/.tmux.conf'
+a java8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home'
+a java11='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.8.jdk/Contents/Home'
+a java14='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-14.0.2.jdk/Contents/Home'
+
+# https://towardsdatascience.com/awesome-rust-powered-command-line-utilities-b5359c38692
+a cat='bat'
+#a ls='exa'
+a rg='ripgrep'
+a grep='rg'
+# a find='fd'
+a ps='procs'
 source ~/.local.alias
